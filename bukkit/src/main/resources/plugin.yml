@@ -1,4 +1,4 @@
-name: BukkitBestGuilds
-main:
-version:
+name: BestGuilds
+main: pl.bestguilds.BukkitBestGuilds
+version: 0.1
 authors: [xierip, crejk, vocan]
