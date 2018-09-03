@@ -2,4 +2,3 @@ rootProject.name = 'bestguilds'
 include 'api'
 include 'core'
 include 'bukkit'
-
