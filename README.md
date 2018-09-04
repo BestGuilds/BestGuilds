@@ -1,1 +1,1 @@
-# pl.bestguilds.BestGuilds
+# BestGuilds
