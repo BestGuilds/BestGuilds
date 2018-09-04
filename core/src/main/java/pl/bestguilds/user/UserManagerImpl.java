@@ -1,15 +1,11 @@
 package pl.bestguilds.user;
 
 import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.UserManager;

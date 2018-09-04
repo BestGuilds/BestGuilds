@@ -1,8 +1,5 @@
 package pl.bestguilds.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import org.jetbrains.annotations.NotNull;
