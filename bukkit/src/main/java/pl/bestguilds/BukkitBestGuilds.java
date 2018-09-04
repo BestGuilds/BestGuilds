@@ -2,17 +2,17 @@ package pl.bestguilds;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.BestGuildsPlugin;
+import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.guild.GuildManager;
 import pl.bestguilds.api.user.UserManager;
 
-public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsPlugin {
+public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI {
 
-  private BestGuilds plugin;
+  private BestGuildsPlugin plugin;
 
   @Override
   public void onEnable() {
-    this.plugin = new BestGuilds();
+    this.plugin = new BestGuildsPlugin();
   }
 
   @Override

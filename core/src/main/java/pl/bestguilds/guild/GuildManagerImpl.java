@@ -1,7 +1,7 @@
 package pl.bestguilds.guild;
 
-import java.util.Collection;
-import java.util.Collections;
+import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -12,7 +12,11 @@ import pl.bestguilds.util.Iterables;
 
 public class GuildManagerImpl implements GuildManager {
 
-  private final ConcurrentMap<GuildManager, Guild> guildMap = new ConcurrentHashMap<>();
+  private final ConcurrentMap<GuildManager, Guild> guildMap;
+
+  public GuildManagerImpl() {
+    this.guildMap = new ConcurrentHashMap<>();
+  }
 
   @Override
   public Optional<Guild> getGuildByTag(@NotNull String tag) {
@@ -25,7 +29,7 @@ public class GuildManagerImpl implements GuildManager {
   }
 
   @Override
-  public Collection<Guild> getGuilds() {
-    return Collections.unmodifiableCollection(this.guildMap.values());
+  public ImmutableCollection<Guild> getGuilds() {
+    return ImmutableSet.copyOf(this.guildMap.values());
   }
 }

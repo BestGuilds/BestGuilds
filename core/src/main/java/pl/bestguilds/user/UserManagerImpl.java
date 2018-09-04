@@ -1,5 +1,8 @@
 package pl.bestguilds.user;
 
+import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -14,20 +17,24 @@ import pl.bestguilds.util.Iterables;
 
 public class UserManagerImpl implements UserManager {
 
-    private final ConcurrentMap<UUID, User> userMap = new ConcurrentHashMap<>();
+  private final ConcurrentMap<UUID, User> userMap;
 
-    @Override
-    public Optional<User> getUser(@NotNull final UUID uuid) {
-        return Optional.ofNullable(this.userMap.get(uuid));
-    }
+  public UserManagerImpl() {
+    userMap = new ConcurrentHashMap<>();
+  }
 
-    @Override
-    public Optional<User> getUser(@NotNull final String name) {
-        return Iterables.find(getUsers(), user -> user.getName().equalsIgnoreCase(name));
-    }
+  @Override
+  public Optional<User> getUser(@NotNull UUID uuid) {
+    return Optional.ofNullable(this.userMap.get(uuid));
+  }
 
-    @Override
-    public Collection<User> getUsers() {
-        return Collections.unmodifiableCollection(this.userMap.values());
-    }
+  @Override
+  public Optional<User> getUser(@NotNull String name) {
+    return Iterables.find(getUsers(), user -> user.getName().equalsIgnoreCase(name));
+  }
+
+  @Override
+  public ImmutableCollection<User> getUsers() {
+    return ImmutableSet.copyOf(this.userMap.values());
+  }
 }

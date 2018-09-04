@@ -1,6 +1,8 @@
 package pl.bestguilds.api.guild;
 
+import com.google.common.collect.ImmutableSet;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.api.user.User;
 
 public interface Guild {
 
@@ -10,10 +12,16 @@ public interface Guild {
   @NotNull
   String getName();
 
-  interface Builder extends javafx.util.Builder<Guild> {
+  ImmutableSet<GuildMember> getMembers();
 
-    Builder tag(String tag);
+  void addMember(@NotNull GuildMember guildMember);
 
-    Builder name(String name);
+  void addMember(@NotNull User user);
+
+  interface Builder extends pl.bestguilds.api.util.Builder<Guild> {
+
+    Builder tag(@NotNull String tag);
+
+    Builder name(@NotNull String name);
   }
 }

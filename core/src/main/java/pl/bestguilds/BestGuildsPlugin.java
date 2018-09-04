@@ -1,18 +1,18 @@
 package pl.bestguilds;
 
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.BaseGuildsPlugin;
+import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.guild.GuildManager;
 import pl.bestguilds.api.user.UserManager;
 import pl.bestguilds.guild.GuildManagerImpl;
 import pl.bestguilds.user.UserManagerImpl;
 
-public class BestGuilds extends BaseGuildsPlugin {
+public class BestGuildsPlugin implements BestGuildsAPI {
 
   private final UserManager  userManager;
   private final GuildManager guildManager;
 
-  public BestGuilds() {
+  BestGuildsPlugin() {
     this.userManager = new UserManagerImpl();
     this.guildManager = new GuildManagerImpl();
   }

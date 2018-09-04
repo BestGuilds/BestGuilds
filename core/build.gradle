@@ -1,4 +1,3 @@
 dependencies {
     compile project(':api')
-    compile group: 'com.google.guava', name: 'guava', version: '26.0-jre'
 }

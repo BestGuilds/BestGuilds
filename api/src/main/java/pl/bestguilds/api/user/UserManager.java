@@ -1,5 +1,6 @@
 package pl.bestguilds.api.user;
 
+import com.google.common.collect.ImmutableCollection;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
@@ -11,5 +12,5 @@ public interface UserManager {
 
   Optional<User> getUser(@NotNull String name);
 
-  Collection<User> getUsers();
+  ImmutableCollection<User> getUsers();
 }
