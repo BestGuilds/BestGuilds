@@ -17,7 +17,7 @@ public class UserImpl implements User {
   private final UserStatistic statistic;
   private       GuildMember   guildMember;
 
-  UserImpl(UUID uuid, String name, UserStatistic statistic) {
+  UserImpl(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistic statistic) {
     this.uuid = uuid;
     this.name = name;
     this.statistic = statistic;

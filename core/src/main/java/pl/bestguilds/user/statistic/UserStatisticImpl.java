@@ -19,12 +19,6 @@ public class UserStatisticImpl implements UserStatistic {
     this.assists = assists;
   }
 
-  @NotNull
-  @Contract(" -> new")
-  public static UserStatisticBuilder builder() {
-    return new UserStatisticBuilder();
-  }
-
   @Override
   public int getPoints() {
     return points;
@@ -63,6 +57,12 @@ public class UserStatisticImpl implements UserStatistic {
   @Override
   public void setAssists(int assists) {
     this.assists = assists;
+  }
+
+  @NotNull
+  @Contract(" -> new")
+  public static UserStatisticBuilder builder() {
+    return new UserStatisticBuilder();
   }
 
   @Override
