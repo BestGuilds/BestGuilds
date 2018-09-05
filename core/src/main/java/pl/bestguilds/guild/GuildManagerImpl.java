@@ -30,6 +30,6 @@ public class GuildManagerImpl implements GuildManager {
 
   @Override
   public ImmutableCollection<Guild> getGuilds() {
-    return ImmutableSet.copyOf(this.guildMap.values());
+    return ImmutableSet.copyOf(guildMap.values());
   }
 }

@@ -1,5 +1,6 @@
 package pl.bestguilds.user.statistic;
 
+import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.UserStatistic;
 import pl.bestguilds.api.user.UserStatistic.Builder;
 
@@ -38,6 +39,7 @@ public class UserStatisticBuilder implements UserStatistic.Builder {
     return this;
   }
 
+  @NotNull
   @Override
   public UserStatistic build() {
     return new UserStatisticImpl(points, kills, deaths, assists);

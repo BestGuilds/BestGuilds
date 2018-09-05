@@ -43,6 +43,7 @@ public class UserBuilder implements User.Builder {
     return this;
   }
 
+  @NotNull
   @Override
   public User build() {
     Objects.requireNonNull(uuid);

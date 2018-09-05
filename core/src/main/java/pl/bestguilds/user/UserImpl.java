@@ -33,12 +33,6 @@ public class UserImpl implements User {
     return name;
   }
 
-  @NotNull
-  @Contract(" -> new")
-  public static UserBuilder builder() {
-    return new UserBuilder();
-  }
-
   @Override
   public @NotNull UserStatistic getStatistic() {
     return statistic;
@@ -54,6 +48,12 @@ public class UserImpl implements User {
     this.guildMember = guildMember;
   }
 
+  @NotNull
+  @Contract(" -> new")
+  public static UserBuilder builder() {
+    return new UserBuilder();
+  }
+
   @Override
   public boolean equals(Object object) {
     if (this == object) {
@@ -65,7 +65,6 @@ public class UserImpl implements User {
     }
 
     UserImpl that = (UserImpl) object;
-
     return this.uuid.equals(that.uuid);
   }
 
