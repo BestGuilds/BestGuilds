@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.guild.rank.GuildRankImpl;
 
 public class GuildImpl implements Guild {
 
@@ -47,7 +46,7 @@ public class GuildImpl implements Guild {
 
   @Override
   public void addMember(@NotNull User user) {
-    addMember(new GuildRankImpl(this, user));
+    addMember(new GuildMemberImpl(this, user));
   }
 
   @NotNull
