@@ -91,7 +91,7 @@ public class GuildImpl implements Guild {
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.tag, this.name);
+    return Objects.hash(this.tag, this.name, this.members, this.allies);
   }
 
   @Override

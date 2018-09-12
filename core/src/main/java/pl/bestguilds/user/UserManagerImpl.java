@@ -8,13 +8,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
+import pl.bestguilds.api.user.UserManager;
 import pl.bestguilds.util.Iterables;
 
-public class UserManager implements pl.bestguilds.api.user.UserManager {
+public class UserManagerImpl implements UserManager {
 
   private final ConcurrentMap<UUID, User> userMap;
 
-  public UserManager() {
+  public UserManagerImpl() {
     userMap = new ConcurrentHashMap<>();
   }
 
@@ -29,7 +30,7 @@ public class UserManager implements pl.bestguilds.api.user.UserManager {
   }
 
   @Override
-  public ImmutableCollection<User> getUsers() {
+  public ImmutableSet<User> getUsers() {
     return ImmutableSet.copyOf(this.userMap.values());
   }
 }

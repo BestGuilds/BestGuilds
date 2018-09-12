@@ -1,6 +1,6 @@
 package pl.bestguilds.api.user;
 
-import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
@@ -11,5 +11,5 @@ public interface UserManager {
 
   Optional<User> getUser(@NotNull String name);
 
-  ImmutableCollection<User> getUsers();
+  ImmutableSet<User> getUsers();
 }

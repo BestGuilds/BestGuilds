@@ -7,16 +7,16 @@ import pl.bestguilds.api.command.CommandManagerImpl;
 import pl.bestguilds.api.guild.GuildManager;
 import pl.bestguilds.command.sub.CreateGuildCommand;
 import pl.bestguilds.guild.GuildManagerImpl;
-import pl.bestguilds.user.UserManager;
+import pl.bestguilds.user.UserManagerImpl;
 
 public final class BestGuildsPlugin implements BestGuildsAPI {
 
-  private final UserManager    userManager;
-  private final GuildManager   guildManager;
-  private final CommandManager commandManager;
+  private final UserManagerImpl userManager;
+  private final GuildManager    guildManager;
+  private final CommandManager  commandManager;
 
   public BestGuildsPlugin() {
-    this.userManager = new UserManager();
+    this.userManager = new UserManagerImpl();
     this.guildManager = new GuildManagerImpl();
     this.commandManager = new CommandManagerImpl();
   }
@@ -28,7 +28,7 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
   }
 
   @Override
-  public @NotNull UserManager getUserManager() {
+  public @NotNull UserManagerImpl getUserManager() {
     return userManager;
   }
 

@@ -26,6 +26,8 @@ public class GuildMemberImpl implements GuildMember {
     return user;
   }
 
+  //TODO guild hierarchy
+
   @Override
   public String toString() {
     return MoreObjects.toStringHelper(this)

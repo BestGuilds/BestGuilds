@@ -1,6 +1,5 @@
 package pl.bestguilds.guild;
 
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,7 +28,7 @@ public class GuildManagerImpl implements GuildManager {
   }
 
   @Override
-  public ImmutableCollection<Guild> getGuilds() {
+  public ImmutableSet<Guild> getGuilds() {
     return ImmutableSet.copyOf(guildMap.values());
   }
 }
