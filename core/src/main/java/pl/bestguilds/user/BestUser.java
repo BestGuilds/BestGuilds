@@ -10,14 +10,14 @@ import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.UserStatistic;
 
-public class UserImpl implements User {
+public abstract class BestUser implements User {
 
   private final UUID          uuid;
   private final String        name;
   private final UserStatistic statistic;
   private       GuildMember   guildMember;
 
-  UserImpl(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistic statistic) {
+  public BestUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistic statistic) {
     this.uuid = uuid;
     this.name = name;
     this.statistic = statistic;
@@ -48,23 +48,17 @@ public class UserImpl implements User {
     this.guildMember = guildMember;
   }
 
-  @NotNull
-  @Contract(" -> new")
-  public static UserBuilder builder() {
-    return new UserBuilder();
-  }
-
   @Override
   public boolean equals(Object object) {
     if (this == object) {
       return true;
     }
 
-    if (!(object instanceof UserImpl)) {
+    if (!(object instanceof BestUser)) {
       return false;
     }
 
-    UserImpl that = (UserImpl) object;
+    BestUser that = (BestUser) object;
     return this.uuid.equals(that.uuid);
   }
 

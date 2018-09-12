@@ -8,14 +8,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.api.user.UserManager;
 import pl.bestguilds.util.Iterables;
 
-public class UserManagerImpl implements UserManager {
+public class UserManager implements pl.bestguilds.api.user.UserManager {
 
   private final ConcurrentMap<UUID, User> userMap;
 
-  public UserManagerImpl() {
+  public UserManager() {
     userMap = new ConcurrentHashMap<>();
   }
 

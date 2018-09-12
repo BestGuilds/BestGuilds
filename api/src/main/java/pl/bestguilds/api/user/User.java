@@ -3,9 +3,10 @@ package pl.bestguilds.api.user;
 import java.util.Optional;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.api.command.CommandSender;
 import pl.bestguilds.api.guild.GuildMember;
 
-public interface User {
+public interface User extends CommandSender {
 
   @NotNull
   UUID getUUID();
@@ -19,6 +20,8 @@ public interface User {
   Optional<GuildMember> getGuildMember();
 
   void setGuildMember(@NotNull GuildMember guild);
+
+  void sendMessage(@NotNull String content);
 
   interface Builder extends pl.bestguilds.api.util.Builder<User> {
 
