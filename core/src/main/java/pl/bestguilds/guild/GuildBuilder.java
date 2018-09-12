@@ -13,8 +13,8 @@ public class GuildBuilder implements Guild.Builder {
 
   private @Nullable String           tag;
   private @Nullable String           name;
-  private @Nullable Set<GuildMember> members;
-  private @Nullable Set<Guild>       allies;
+  private           Set<GuildMember> members;
+  private           Set<Guild>       allies;
 
   GuildBuilder() {
     this.members = new HashSet<>(1);
