@@ -17,9 +17,9 @@ public class BukkitUserBuilder extends BestUserBuilder {
   public User build() {
     Objects.requireNonNull(uuid);
     Objects.requireNonNull(name);
-    Objects.requireNonNull(statistic);
+    Objects.requireNonNull(statistics);
 
-    User user = new BukkitUser(uuid, name, statistic);
+    User user = new BukkitUser(uuid, name, statistics);
 
     if (guildMember != null)
       user.setGuildMember(guildMember);

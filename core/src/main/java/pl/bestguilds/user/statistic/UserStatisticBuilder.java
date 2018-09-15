@@ -1,10 +1,10 @@
 package pl.bestguilds.user.statistic;
 
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.user.UserStatistic;
-import pl.bestguilds.api.user.UserStatistic.Builder;
+import pl.bestguilds.api.user.UserStatistics;
+import pl.bestguilds.api.user.UserStatistics.Builder;
 
-public class UserStatisticBuilder implements UserStatistic.Builder {
+public class UserStatisticBuilder implements UserStatistics.Builder {
 
   private int points;
   private int kills;
@@ -41,7 +41,7 @@ public class UserStatisticBuilder implements UserStatistic.Builder {
 
   @NotNull
   @Override
-  public UserStatistic build() {
+  public UserStatistics build() {
     return new UserStatisticImpl(points, kills, deaths, assists);
   }
 }

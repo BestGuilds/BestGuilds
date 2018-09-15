@@ -15,7 +15,7 @@ public interface User extends CommandSender {
   String getName();
 
   @NotNull
-  UserStatistic getStatistic();
+  UserStatistics getStatistics();
 
   Optional<GuildMember> getGuildMember();
 
@@ -29,7 +29,7 @@ public interface User extends CommandSender {
 
     Builder name(@NotNull String name);
 
-    Builder statistic(@NotNull UserStatistic statistic);
+    Builder statistics(@NotNull UserStatistics statistics);
 
     Builder guildRank(@NotNull GuildMember guild);
   }

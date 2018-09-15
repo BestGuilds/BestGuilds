@@ -6,15 +6,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.user.UserStatistic;
+import pl.bestguilds.api.user.UserStatistics;
 import pl.bestguilds.user.BestUser;
 import pl.bestguilds.user.BestUserBuilder;
 import pl.bestguilds.bukkit.util.ChatColorUtil;
 
 public class BukkitUser extends BestUser {
 
-  BukkitUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistic statistic) {
-    super(uuid, name, statistic);
+  BukkitUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistics statistics) {
+    super(uuid, name, statistics);
   }
 
   @NotNull

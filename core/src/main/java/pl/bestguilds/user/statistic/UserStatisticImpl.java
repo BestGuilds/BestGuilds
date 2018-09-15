@@ -3,9 +3,9 @@ package pl.bestguilds.user.statistic;
 import com.google.common.base.MoreObjects;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.user.UserStatistic;
+import pl.bestguilds.api.user.UserStatistics;
 
-public class UserStatisticImpl implements UserStatistic {
+public class UserStatisticImpl implements UserStatistics {
 
   private int points;
   private int kills;

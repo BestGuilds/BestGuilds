@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.User.Builder;
-import pl.bestguilds.api.user.UserStatistic;
+import pl.bestguilds.api.user.UserStatistics;
 
 public abstract class BestUserBuilder implements User.Builder {
 
@@ -16,7 +16,7 @@ public abstract class BestUserBuilder implements User.Builder {
   @Nullable
   protected String        name;
   @Nullable
-  protected UserStatistic statistic;
+  protected UserStatistics statistics;
   @Nullable
   protected GuildMember   guildMember;
 
@@ -36,8 +36,8 @@ public abstract class BestUserBuilder implements User.Builder {
   }
 
   @Override
-  public Builder statistic(@NotNull UserStatistic statistic) {
-    this.statistic = statistic;
+  public Builder statistics(@NotNull UserStatistics statistics) {
+    this.statistics = statistics;
     return this;
   }
 

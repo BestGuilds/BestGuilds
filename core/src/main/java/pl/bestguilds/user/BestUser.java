@@ -4,23 +4,22 @@ import com.google.common.base.MoreObjects;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.api.user.UserStatistic;
+import pl.bestguilds.api.user.UserStatistics;
 
 public abstract class BestUser implements User {
 
-  private final UUID          uuid;
-  private final String        name;
-  private final UserStatistic statistic;
-  private       GuildMember   guildMember;
+  private final UUID           uuid;
+  private final String         name;
+  private final UserStatistics statistics;
+  private       GuildMember    guildMember;
 
-  public BestUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistic statistic) {
+  public BestUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistics statistic) {
     this.uuid = uuid;
     this.name = name;
-    this.statistic = statistic;
+    this.statistics = statistic;
   }
 
   @Override
@@ -34,8 +33,8 @@ public abstract class BestUser implements User {
   }
 
   @Override
-  public @NotNull UserStatistic getStatistic() {
-    return statistic;
+  public @NotNull UserStatistics getStatistics() {
+    return statistics;
   }
 
   @Override
@@ -72,7 +71,7 @@ public abstract class BestUser implements User {
     return MoreObjects.toStringHelper(this)
         .add("uuid", uuid)
         .add("name", name)
-        .add("statistic", statistic)
+        .add("statistics", statistics)
         .add("guild", guildMember)
         .toString();
   }
