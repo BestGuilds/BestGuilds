@@ -3,7 +3,6 @@ package pl.bestguilds.api.command;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableSet;
-import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 
 public final class CommandManagerImpl implements CommandManager {
@@ -26,11 +25,6 @@ public final class CommandManagerImpl implements CommandManager {
     Command command = new Command(subCommand.value(), subCommand.aliases(), executor);
 
     subCommands.put(command, command.getName());
-  }
-
-  @Override
-  public void register(CommandExecutor... executors) {
-    Arrays.stream(executors).forEach(this::register);
   }
 
   @Override

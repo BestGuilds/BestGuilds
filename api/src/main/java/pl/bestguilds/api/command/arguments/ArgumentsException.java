@@ -8,7 +8,7 @@ public final class ArgumentsException extends CommandException {
     super();
   }
 
-  public ArgumentsException(String message) {
+  ArgumentsException(String message) {
     super(message);
   }
 }

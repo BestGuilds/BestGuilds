@@ -1,13 +1,16 @@
 package pl.bestguilds.api.command;
 
 import com.google.common.collect.ImmutableSet;
+import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 
 public interface CommandManager {
 
   void register(@NotNull CommandExecutor executor);
 
-  void register(CommandExecutor... executors);
+  default void register(CommandExecutor... executors) {
+    Arrays.stream(executors).forEach(this::register);
+  }
 
   ImmutableSet<Command> getSubCommands();
 }
