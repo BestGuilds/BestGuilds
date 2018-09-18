@@ -14,6 +14,6 @@ subprojects {
     }
 
     dependencies {
-        compile group: 'org.jetbrains', name: 'annotations', version: '16.0.2'
+        compile group: 'org.jetbrains', name: 'annotations', version: '16.0.3'
     }
 }
