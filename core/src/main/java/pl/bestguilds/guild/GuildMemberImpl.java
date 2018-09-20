@@ -1,6 +1,7 @@
 package pl.bestguilds.guild;
 
 import com.google.common.base.MoreObjects;
+import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
@@ -27,6 +28,25 @@ public class GuildMemberImpl implements GuildMember {
   }
 
   //TODO guild hierarchy
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+
+    if (!(object instanceof GuildMemberImpl)) {
+      return false;
+    }
+
+    GuildMemberImpl that = (GuildMemberImpl) object;
+    return this.user.equals(that.user);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(guild, user);
+  }
 
   @Override
   public String toString() {

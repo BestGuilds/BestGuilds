@@ -1,13 +1,13 @@
 package pl.bestguilds.user;
 
-import java.util.Objects;
-import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.User.Builder;
 import pl.bestguilds.api.user.UserStatistics;
+
+import java.util.UUID;
 
 public abstract class BestUserBuilder implements User.Builder {
 

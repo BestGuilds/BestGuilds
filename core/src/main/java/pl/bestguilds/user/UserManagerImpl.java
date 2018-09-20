@@ -1,6 +1,5 @@
 package pl.bestguilds.user;
 
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.UUID;

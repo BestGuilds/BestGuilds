@@ -17,7 +17,7 @@ public class GuildImpl implements Guild {
   private final Set<GuildMember> members;
   private final Set<Guild>       allies;
 
-  GuildImpl(@NotNull String tag, @NotNull String name, @NotNull Set<GuildMember> members, @NotNull Set<Guild> allies) {
+  GuildImpl(String tag, String name, Set<GuildMember> members, Set<Guild> allies) {
     this.tag = tag;
     this.name = name;
     this.members = members;
@@ -25,12 +25,12 @@ public class GuildImpl implements Guild {
   }
 
   @Override
-  public @NotNull String getTag() {
+  public String getTag() {
     return tag;
   }
 
   @Override
-  public @NotNull String getName() {
+  public String getName() {
     return name;
   }
 

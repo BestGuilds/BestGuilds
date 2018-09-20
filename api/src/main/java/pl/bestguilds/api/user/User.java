@@ -8,13 +8,10 @@ import pl.bestguilds.api.guild.GuildMember;
 
 public interface User extends CommandSender {
 
-  @NotNull
   UUID getUUID();
 
-  @NotNull
   String getName();
 
-  @NotNull
   UserStatistics getStatistics();
 
   Optional<GuildMember> getGuildMember();

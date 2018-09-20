@@ -16,24 +16,24 @@ public abstract class BestUser implements User {
   private final UserStatistics statistics;
   private       GuildMember    guildMember;
 
-  public BestUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistics statistic) {
+  public BestUser(UUID uuid, String name, UserStatistics statistic) {
     this.uuid = uuid;
     this.name = name;
     this.statistics = statistic;
   }
 
   @Override
-  public @NotNull UUID getUUID() {
+  public UUID getUUID() {
     return uuid;
   }
 
   @Override
-  public @NotNull String getName() {
+  public String getName() {
     return name;
   }
 
   @Override
-  public @NotNull UserStatistics getStatistics() {
+  public UserStatistics getStatistics() {
     return statistics;
   }
 

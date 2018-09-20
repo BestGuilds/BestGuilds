@@ -13,7 +13,7 @@ import pl.bestguilds.bukkit.util.ChatColorUtil;
 
 public class BukkitUser extends BestUser {
 
-  BukkitUser(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistics statistics) {
+  BukkitUser(UUID uuid, String name, UserStatistics statistics) {
     super(uuid, name, statistics);
   }
 

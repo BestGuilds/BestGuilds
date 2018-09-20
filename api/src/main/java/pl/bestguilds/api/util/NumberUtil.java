@@ -8,34 +8,14 @@ public final class NumberUtil {
   }
 
   public static int parseInt(@NotNull String content) throws NumberFormatException {
-    try {
-      return Integer.parseInt(content);
-    } catch (NumberFormatException exception) {
-      throw new NumberFormatException(exception.getMessage());
-    }
+    return Integer.parseInt(content);
   }
 
   public static long parseLong(@NotNull String content) throws NumberFormatException {
-    try {
-      return Long.parseLong(content);
-    } catch (NumberFormatException exception) {
-      throw new NumberFormatException(exception.getMessage());
-    }
+    return Long.parseLong(content);
   }
 
   public static double parseDouble(@NotNull String content) throws NumberFormatException {
-    try {
-      return Double.parseDouble(content);
-    } catch (NumberFormatException exception) {
-      throw new NumberFormatException(exception.getMessage());
-    }
-  }
-
-  public static float parseFloat(@NotNull String content) throws NumberFormatException {
-    try {
-      return Float.parseFloat(content);
-    } catch (NumberFormatException exception) {
-      throw new NumberFormatException(exception.getMessage());
-    }
+    return Double.parseDouble(content);
   }
 }
