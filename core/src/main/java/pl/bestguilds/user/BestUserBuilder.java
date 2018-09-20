@@ -42,7 +42,7 @@ public abstract class BestUserBuilder implements User.Builder {
   }
 
   @Override
-  public Builder guildRank(@NotNull GuildMember guildMember) {
+  public Builder guildMember(@NotNull GuildMember guildMember) {
     this.guildMember = guildMember;
     return this;
   }

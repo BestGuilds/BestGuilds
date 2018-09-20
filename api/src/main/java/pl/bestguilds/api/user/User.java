@@ -28,6 +28,6 @@ public interface User extends CommandSender {
 
     Builder statistics(@NotNull UserStatistics statistics);
 
-    Builder guildRank(@NotNull GuildMember guild);
+    Builder guildMember(@NotNull GuildMember guild);
   }
 }
