@@ -1,12 +1,12 @@
 package pl.bestguilds;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.BestGuildsAPI;
+import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.CommandManager;
 import pl.bestguilds.api.command.CommandManagerImpl;
 import pl.bestguilds.api.guild.GuildManager;
+import pl.bestguilds.command.GuildCommand;
 import pl.bestguilds.command.sub.CreateGuildCommand;
 import pl.bestguilds.guild.GuildManagerImpl;
 import pl.bestguilds.user.UserManagerImpl;
@@ -23,10 +23,12 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
     this.commandManager = new CommandManagerImpl();
   }
 
-  public void registerCommands() {
+  public void registerCommands(@NotNull CommandInjector injector) {
+    this.commandManager.setMainCommand(new GuildCommand(this));
     this.commandManager.register(
         new CreateGuildCommand(this)
     );
+    injector.inject();
   }
 
   @Override

@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.UserManager;
-import pl.bestguilds.util.Iterables;
+import pl.bestguilds.api.util.Iterables;
 
 public class UserManagerImpl implements UserManager {
 

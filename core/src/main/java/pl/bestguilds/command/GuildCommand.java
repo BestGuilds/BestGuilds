@@ -15,6 +15,6 @@ public class GuildCommand extends UserCommandExecutor {
 
   @Override
   public void execute(User sender, Arguments args) throws CommandException {
-
+    sender.sendMessage("=)");
   }
 }

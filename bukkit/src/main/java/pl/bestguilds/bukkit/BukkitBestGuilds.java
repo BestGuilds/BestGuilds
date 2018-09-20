@@ -4,9 +4,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.BestGuildsPlugin;
 import pl.bestguilds.api.BestGuildsAPI;
+import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.CommandManager;
 import pl.bestguilds.api.guild.GuildManager;
 import pl.bestguilds.api.user.UserManager;
+import pl.bestguilds.bukkit.command.BukkitCommandInjector;
 
 public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI {
 
@@ -14,8 +16,9 @@ public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI 
 
   @Override
   public void onEnable() {
-    this.plugin = new BestGuildsPlugin();
-    this.plugin.registerCommands();
+    plugin = new BestGuildsPlugin();
+    CommandInjector commandInjector = new BukkitCommandInjector(this);
+    plugin.registerCommands(commandInjector);
   }
 
   @Override

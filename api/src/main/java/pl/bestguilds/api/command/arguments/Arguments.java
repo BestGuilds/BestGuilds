@@ -6,6 +6,10 @@ import org.jetbrains.annotations.NotNull;
 
 public interface Arguments {
 
+  static Arguments of(String[] args) {
+    return new ArgumentsImpl(args);
+  }
+
   int getSize();
 
   ImmutableList<String> get();
@@ -21,8 +25,6 @@ public interface Arguments {
   long asLong(int index) throws ArgumentsException;
 
   double asDouble(int index) throws ArgumentsException;
-
-  float asFloat(int index) throws ArgumentsException;
 
   boolean asBoolean(int index) throws ArgumentsException;
 }

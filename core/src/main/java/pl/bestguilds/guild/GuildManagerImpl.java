@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildManager;
-import pl.bestguilds.util.Iterables;
+import pl.bestguilds.api.util.Iterables;
 
 public class GuildManagerImpl implements GuildManager {
 

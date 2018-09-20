@@ -79,17 +79,6 @@ final class ArgumentsImpl implements Arguments {
   }
 
   @Override
-  public float asFloat(int index) throws ArgumentsException {
-    final String content = asString(index);
-
-    try {
-      return NumberUtil.parseFloat(content);
-    } catch (NumberFormatException exception) {
-      throw new ArgumentsException("Cannot parse " + content + " to float.");
-    }
-  }
-
-  @Override
   public boolean asBoolean(int index) throws ArgumentsException {
     final String content = asString(index);
 

@@ -11,7 +11,7 @@ public class BukkitUserBuilder extends BestUserBuilder {
   }
 
   @Override
-  public User build() {
+  public final User build() {
     Objects.requireNonNull(uuid);
     Objects.requireNonNull(name);
     Objects.requireNonNull(statistics);
