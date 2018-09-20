@@ -1,7 +1,6 @@
 package pl.bestguilds.bukkit.command;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import pl.bestguilds.api.BestGuildsAPI;
-import pl.bestguilds.api.command.Command;
+import pl.bestguilds.api.command.CommandImpl;
 import pl.bestguilds.api.command.CommandException;
 import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.ConsoleCommandSender;
@@ -43,7 +42,7 @@ public class BukkitCommandInjector implements CommandInjector {
 
   @SuppressWarnings("unchecked")
   private BukkitCommand bukkit() {
-    final Command command = plugin.getCommandManager().getMainCommand();
+    final CommandImpl command = plugin.getCommandManager().getMainCommand();
 
     return new BukkitCommand(command.getName(), "", "", Arrays.asList(command.getAliases())) {
       @Override
@@ -66,7 +65,7 @@ public class BukkitCommandInjector implements CommandInjector {
         List<String> newArgs = Arrays.asList(bukkitArgs).subList(2, bukkitArgs.length);
         final Arguments args = Arguments.of((String[]) newArgs.toArray());
 
-        Optional<Command> subCommand = plugin.getCommandManager().getCommand(bukkitArgs[1]);
+        Optional<CommandImpl> subCommand = plugin.getCommandManager().getCommand(bukkitArgs[1]);
 
         if (subCommand.isPresent()) {
           subCommand.get().getExecutor().execute(commandSender, args);
@@ -81,7 +80,7 @@ public class BukkitCommandInjector implements CommandInjector {
 
   @SuppressWarnings("unchecked")
   private void executeMainCommand(pl.bestguilds.api.command.CommandSender sender, Arguments arguments) {
-    final Command command = plugin.getCommandManager().getMainCommand();
+    final CommandImpl command = plugin.getCommandManager().getMainCommand();
     command.getExecutor().execute(sender, arguments);
   }
 }

@@ -9,7 +9,7 @@ import pl.bestguilds.api.util.Iterables;
 
 public final class CommandManagerImpl implements CommandManager {
 
-  private       Command                mainCommand;
+  private       CommandImpl                mainCommand;
   private final BiMap<Command, String> subCommands;
 
   public CommandManagerImpl() {
@@ -25,19 +25,19 @@ public final class CommandManagerImpl implements CommandManager {
     }
 
     SubCommand subCommand = type.getAnnotation(SubCommand.class);
-    Command command = new Command(subCommand.value(), subCommand.aliases(), executor);
+    Command command = new CommandImpl(subCommand.value(), subCommand.aliases(), executor);
 
     subCommands.put(command, command.getName());
   }
 
   @Override
-  public Command getMainCommand() {
+  public CommandImpl getMainCommand() {
     return mainCommand;
   }
 
   @Override
   public void setMainCommand(CommandExecutor<?> executor) {
-    mainCommand = new Command("bestguilds", new String[]{"guilds", "g"}, executor);
+    mainCommand = new CommandImpl("bestguilds", new String[]{"guilds", "g"}, executor);
   }
 
   @Override
