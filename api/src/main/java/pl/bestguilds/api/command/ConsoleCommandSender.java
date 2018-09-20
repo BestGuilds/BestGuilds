@@ -2,8 +2,8 @@ package pl.bestguilds.api.command;
 
 public interface ConsoleCommandSender extends CommandSender {
 
-  String        NAME   = "[CONSOLE";
-  CommandSender sender = new ConsoleCommandSender() {
+  String        NAME   = "[CONSOLE]";
+  CommandSender SENDER = new ConsoleCommandSender() {
     @Override
     public String getName() {
       return NAME;
@@ -11,7 +11,7 @@ public interface ConsoleCommandSender extends CommandSender {
   };
 
   static CommandSender get() {
-    return sender;
+    return SENDER;
   }
 
   @Override
