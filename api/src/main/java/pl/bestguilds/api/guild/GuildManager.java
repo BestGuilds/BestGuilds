@@ -1,6 +1,6 @@
 package pl.bestguilds.api.guild;
 
-import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,5 +10,5 @@ public interface GuildManager {
 
   Optional<Guild> getGuildByName(@NotNull String name);
 
-  ImmutableCollection<Guild> getGuilds();
+  ImmutableSet<Guild> getGuilds();
 }

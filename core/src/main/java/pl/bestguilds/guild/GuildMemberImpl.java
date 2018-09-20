@@ -1,17 +1,18 @@
-package pl.bestguilds.guild.rank;
+package pl.bestguilds.guild;
 
 import com.google.common.base.MoreObjects;
+import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 
-public class GuildRankImpl implements GuildMember {
+public class GuildMemberImpl implements GuildMember {
 
   private final Guild guild;
   private final User  user;
 
-  public GuildRankImpl(@NotNull Guild guild, @NotNull User user) {
+  GuildMemberImpl(@NotNull Guild guild, @NotNull User user) {
     this.guild = guild;
     this.user = user;
   }
@@ -24,6 +25,27 @@ public class GuildRankImpl implements GuildMember {
   @Override
   public User getUser() {
     return user;
+  }
+
+  //TODO guild hierarchy
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+
+    if (!(object instanceof GuildMemberImpl)) {
+      return false;
+    }
+
+    GuildMemberImpl that = (GuildMemberImpl) object;
+    return this.user.equals(that.user);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(guild, user);
   }
 
   @Override

@@ -1,6 +1,5 @@
 package pl.bestguilds.user;
 
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.UUID;
@@ -9,7 +8,7 @@ import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.UserManager;
-import pl.bestguilds.util.Iterables;
+import pl.bestguilds.api.util.Iterables;
 
 public class UserManagerImpl implements UserManager {
 
@@ -30,7 +29,7 @@ public class UserManagerImpl implements UserManager {
   }
 
   @Override
-  public ImmutableCollection<User> getUsers() {
+  public ImmutableSet<User> getUsers() {
     return ImmutableSet.copyOf(this.userMap.values());
   }
 }

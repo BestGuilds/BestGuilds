@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.guild.rank.GuildRankImpl;
 
 public class GuildImpl implements Guild {
 
@@ -18,7 +17,7 @@ public class GuildImpl implements Guild {
   private final Set<GuildMember> members;
   private final Set<Guild>       allies;
 
-  GuildImpl(@NotNull String tag, @NotNull String name, @NotNull Set<GuildMember> members, @NotNull Set<Guild> allies) {
+  GuildImpl(String tag, String name, Set<GuildMember> members, Set<Guild> allies) {
     this.tag = tag;
     this.name = name;
     this.members = members;
@@ -26,12 +25,12 @@ public class GuildImpl implements Guild {
   }
 
   @Override
-  public @NotNull String getTag() {
+  public String getTag() {
     return tag;
   }
 
   @Override
-  public @NotNull String getName() {
+  public String getName() {
     return name;
   }
 
@@ -47,7 +46,7 @@ public class GuildImpl implements Guild {
 
   @Override
   public void addMember(@NotNull User user) {
-    addMember(new GuildRankImpl(this, user));
+    addMember(new GuildMemberImpl(this, user));
   }
 
   @NotNull
@@ -92,7 +91,7 @@ public class GuildImpl implements Guild {
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.tag, this.name);
+    return Objects.hash(this.tag, this.name, this.members, this.allies);
   }
 
   @Override

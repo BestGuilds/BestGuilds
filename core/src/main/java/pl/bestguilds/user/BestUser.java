@@ -4,38 +4,37 @@ import com.google.common.base.MoreObjects;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.api.user.UserStatistic;
+import pl.bestguilds.api.user.UserStatistics;
 
-public class UserImpl implements User {
+public abstract class BestUser implements User {
 
-  private final UUID          uuid;
-  private final String        name;
-  private final UserStatistic statistic;
-  private       GuildMember   guildMember;
+  private final UUID           uuid;
+  private final String         name;
+  private final UserStatistics statistics;
+  private       GuildMember    guildMember;
 
-  UserImpl(@NotNull UUID uuid, @NotNull String name, @NotNull UserStatistic statistic) {
+  public BestUser(UUID uuid, String name, UserStatistics statistic) {
     this.uuid = uuid;
     this.name = name;
-    this.statistic = statistic;
+    this.statistics = statistic;
   }
 
   @Override
-  public @NotNull UUID getUUID() {
+  public UUID getUUID() {
     return uuid;
   }
 
   @Override
-  public @NotNull String getName() {
+  public String getName() {
     return name;
   }
 
   @Override
-  public @NotNull UserStatistic getStatistic() {
-    return statistic;
+  public UserStatistics getStatistics() {
+    return statistics;
   }
 
   @Override
@@ -48,23 +47,17 @@ public class UserImpl implements User {
     this.guildMember = guildMember;
   }
 
-  @NotNull
-  @Contract(" -> new")
-  public static UserBuilder builder() {
-    return new UserBuilder();
-  }
-
   @Override
   public boolean equals(Object object) {
     if (this == object) {
       return true;
     }
 
-    if (!(object instanceof UserImpl)) {
+    if (!(object instanceof BestUser)) {
       return false;
     }
 
-    UserImpl that = (UserImpl) object;
+    BestUser that = (BestUser) object;
     return this.uuid.equals(that.uuid);
   }
 
@@ -78,7 +71,7 @@ public class UserImpl implements User {
     return MoreObjects.toStringHelper(this)
         .add("uuid", uuid)
         .add("name", name)
-        .add("statistic", statistic)
+        .add("statistics", statistics)
         .add("guild", guildMember)
         .toString();
   }

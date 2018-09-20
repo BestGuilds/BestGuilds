@@ -7,10 +7,8 @@ import pl.bestguilds.api.user.User;
 
 public interface Guild {
 
-  @NotNull
   String getTag();
 
-  @NotNull
   String getName();
 
   ImmutableSet<GuildMember> getMembers();

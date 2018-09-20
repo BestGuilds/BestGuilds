@@ -1,6 +1,6 @@
 package pl.bestguilds.api.user;
 
-public interface UserStatistic {
+public interface UserStatistics {
 
   int getPoints();
 
@@ -18,7 +18,7 @@ public interface UserStatistic {
 
   void setAssists(int assists);
 
-  interface Builder extends pl.bestguilds.api.util.Builder<UserStatistic> {
+  interface Builder extends pl.bestguilds.api.util.Builder<UserStatistics> {
 
     Builder points(int points);
 
