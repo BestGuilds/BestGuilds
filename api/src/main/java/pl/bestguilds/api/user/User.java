@@ -21,8 +21,6 @@ public interface User extends CommandSender {
 
   void sendMessage(@NotNull String content);
 
-  void setPlayer(Object player);
-
   interface Builder extends pl.bestguilds.api.util.Builder<User> {
 
     Builder uuid(@NotNull UUID uuid);

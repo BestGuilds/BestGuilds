@@ -34,12 +34,11 @@ public class BukkitUser extends BestUser {
     getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
   }
 
-  @Override
-  public void setPlayer(Object player) {
-    this.playerReference = new WeakReference<>((Player) player);
+  public void setPlayer(Player player) {
+    this.playerReference = new WeakReference<>(player);
   }
 
-  private Optional<Player> getPlayer() {
+  public final Optional<Player> getPlayer() {
     Player player = playerReference.get();
 
     if (player == null || !player.isOnline()) {
