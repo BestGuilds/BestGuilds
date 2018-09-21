@@ -13,7 +13,7 @@ public interface CommandManager {
     Arrays.stream(executors).forEach(this::register);
   }
 
-  CommandImpl getMainCommand();
+  Command getMainCommand();
 
   void setMainCommand(CommandExecutor<?> executor);
 

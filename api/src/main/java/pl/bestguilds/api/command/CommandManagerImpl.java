@@ -9,7 +9,7 @@ import pl.bestguilds.api.util.Iterables;
 
 public final class CommandManagerImpl implements CommandManager {
 
-  private       CommandImpl                mainCommand;
+  private       Command                mainCommand;
   private final BiMap<Command, String> subCommands;
 
   public CommandManagerImpl() {
@@ -31,7 +31,7 @@ public final class CommandManagerImpl implements CommandManager {
   }
 
   @Override
-  public CommandImpl getMainCommand() {
+  public Command getMainCommand() {
     return mainCommand;
   }
 
@@ -42,7 +42,7 @@ public final class CommandManagerImpl implements CommandManager {
 
   @Override
   public Optional<Command> getCommand(String name) {
-    return Iterables.find(getSubCommands(), command -> command.constants(name));
+    return Iterables.find(getSubCommands(), command -> command.contains(name));
   }
 
   @Override

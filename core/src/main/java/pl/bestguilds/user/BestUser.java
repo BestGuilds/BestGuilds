@@ -63,7 +63,7 @@ public abstract class BestUser implements User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.uuid, this.name);
+    return Objects.hash(uuid, name, statistics, guildMember);
   }
 
   @Override

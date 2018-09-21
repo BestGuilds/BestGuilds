@@ -1,6 +1,7 @@
 package pl.bestguilds.bukkit;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.BestGuildsPlugin;
 import pl.bestguilds.api.BestGuildsAPI;
@@ -26,18 +27,21 @@ public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI 
 
   }
 
+  @NotNull
   @Override
-  public @NotNull UserManager getUserManager() {
+  public final UserManager getUserManager() {
     return plugin.getUserManager();
   }
 
+  @NotNull
   @Override
-  public @NotNull GuildManager getGuildManager() {
+  public final GuildManager getGuildManager() {
     return plugin.getGuildManager();
   }
 
+  @NotNull
   @Override
-  public @NotNull CommandManager getCommandManager() {
+  public final CommandManager getCommandManager() {
     return plugin.getCommandManager();
   }
 }
