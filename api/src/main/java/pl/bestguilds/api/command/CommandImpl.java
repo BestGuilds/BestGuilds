@@ -35,7 +35,7 @@ public class CommandImpl implements Command {
   }
 
   @Override
-  public boolean constants(String name) {
+  public boolean contains(String name) {
     if (this.name.equalsIgnoreCase(name)) {
       return true;
     }

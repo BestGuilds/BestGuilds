@@ -8,5 +8,5 @@ public interface Command {
 
   CommandExecutor getExecutor();
 
-  boolean constants(String name);
+  boolean contains(String name);
 }
