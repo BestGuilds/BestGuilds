@@ -1,5 +1,8 @@
 package pl.bestguilds.bukkit.user;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import org.bukkit.Bukkit;
@@ -13,8 +16,11 @@ import pl.bestguilds.bukkit.util.ChatColorUtil;
 
 public class BukkitUser extends BestUser {
 
+  private Reference<Player> playerReference;
+
   BukkitUser(UUID uuid, String name, UserStatistics statistics) {
     super(uuid, name, statistics);
+    this.playerReference = new WeakReference<>(Bukkit.getPlayer(uuid));
   }
 
   @NotNull
@@ -28,7 +34,18 @@ public class BukkitUser extends BestUser {
     getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
   }
 
+  @Override
+  public void setPlayer(Object player) {
+    this.playerReference = new WeakReference<>((Player) player);
+  }
+
   private Optional<Player> getPlayer() {
-    return Optional.ofNullable(Bukkit.getPlayer(this.getUUID()));
+    Player player = playerReference.get();
+
+    if (player == null || !player.isOnline()) {
+      return Optional.empty();
+    }
+
+    return Optional.of(player);
   }
 }

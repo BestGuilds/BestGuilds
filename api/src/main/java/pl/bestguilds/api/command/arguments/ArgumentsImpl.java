@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.command.CommandException;
 import pl.bestguilds.api.util.NumberUtil;
 
 final class ArgumentsImpl implements Arguments {
