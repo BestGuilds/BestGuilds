@@ -1,13 +1,12 @@
 package pl.bestguilds.api.user;
 
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.command.CommandSender;
+import pl.bestguilds.api.command.BestCommandSender;
 import pl.bestguilds.api.guild.GuildMember;
 
-public interface User extends CommandSender {
+public interface User extends BestCommandSender {
 
   UUID getUUID();
 

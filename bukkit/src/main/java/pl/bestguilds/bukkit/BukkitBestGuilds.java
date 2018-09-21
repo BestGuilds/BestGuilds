@@ -3,6 +3,7 @@ package pl.bestguilds.bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.BestGuilds;
 import pl.bestguilds.BestGuildsPlugin;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.command.CommandInjector;

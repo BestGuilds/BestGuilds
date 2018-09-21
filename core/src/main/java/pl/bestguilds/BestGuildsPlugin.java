@@ -21,6 +21,7 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
     this.userManager = new UserManagerImpl();
     this.guildManager = new GuildManagerImpl();
     this.commandManager = new CommandManagerImpl();
+    BestGuilds.setInstance(this);
   }
 
   public void registerCommands(@NotNull CommandInjector injector) {

@@ -1,6 +1,6 @@
 package pl.bestguilds.api.command;
 
-public interface CommandSender {
+public interface BestCommandSender {
 
   String getName();
 }

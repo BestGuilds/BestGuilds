@@ -2,9 +2,9 @@ package pl.bestguilds.api.user;
 
 public interface UserStatistics {
 
-  int getPoints();
+  float getPoints();
 
-  void setPoints(int points);
+  void setPoints(float points);
 
   int getKills();
 
@@ -20,7 +20,7 @@ public interface UserStatistics {
 
   interface Builder extends pl.bestguilds.api.util.Builder<UserStatistics> {
 
-    Builder points(int points);
+    Builder points(float points);
 
     Builder kills(int kills);
 

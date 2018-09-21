@@ -12,13 +12,13 @@ import java.util.UUID;
 public abstract class BestUserBuilder implements User.Builder {
 
   @Nullable
-  protected UUID          uuid;
+  protected UUID           uuid;
   @Nullable
-  protected String        name;
+  protected String         name;
   @Nullable
   protected UserStatistics statistics;
   @Nullable
-  protected GuildMember   guildMember;
+  protected GuildMember    guildMember;
 
   protected BestUserBuilder() {
   }

@@ -11,15 +11,15 @@ import pl.bestguilds.api.user.UserStatistics;
 
 public abstract class BestUser implements User {
 
-  private final UUID           uuid;
-  private final String         name;
-  private final UserStatistics statistics;
-  private       GuildMember    guildMember;
+  protected final UUID           uuid;
+  private final   String         name;
+  private final   UserStatistics statistics;
+  private         GuildMember    guildMember;
 
-  public BestUser(UUID uuid, String name, UserStatistics statistic) {
+  public BestUser(UUID uuid, String name, UserStatistics statistics) {
     this.uuid = uuid;
     this.name = name;
-    this.statistics = statistic;
+    this.statistics = statistics;
   }
 
   @Override

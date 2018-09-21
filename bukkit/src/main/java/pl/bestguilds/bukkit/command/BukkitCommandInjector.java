@@ -10,21 +10,24 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import pl.bestguilds.api.BestGuildsAPI;
+import pl.bestguilds.api.command.BestCommandSender;
 import pl.bestguilds.api.command.Command;
-import pl.bestguilds.api.command.CommandImpl;
 import pl.bestguilds.api.command.CommandException;
 import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.ConsoleCommandSender;
+import pl.bestguilds.api.command.ConsoleCommandSender.Impl;
 import pl.bestguilds.api.command.arguments.Arguments;
 import pl.bestguilds.api.user.User;
 
 public class BukkitCommandInjector implements CommandInjector {
 
-  private final CommandMap    commandMap;
-  private final BestGuildsAPI plugin;
+  private final CommandMap        commandMap;
+  private final BestCommandSender defaultSender;
+  private final BestGuildsAPI     plugin;
 
   public BukkitCommandInjector(BestGuildsAPI plugin) {
     this.plugin = plugin;
+    this.defaultSender = new ConsoleCommandSender.Impl();
 
     try {
       Field field = Bukkit.getServer().getClass().getDeclaredField("commandMap");
@@ -38,17 +41,17 @@ public class BukkitCommandInjector implements CommandInjector {
 
   @Override
   public void inject() {
-    this.commandMap.register("bestguilds", bukkit());
+    commandMap.register("bestguilds", bukkit());
   }
 
   @SuppressWarnings("unchecked")
   private BukkitCommand bukkit() {
     final Command command = plugin.getCommandManager().getMainCommand();
 
-    return new BukkitCommand(command.getName(), "", "", Arrays.asList(command.getAliases())) {
+    return new BukkitCommand(command.getName(), "a guild command", "/g", Arrays.asList(command.getAliases())) {
       @Override
       public boolean execute(CommandSender bukkitSender, String x, String[] bukkitArgs) {
-        pl.bestguilds.api.command.CommandSender commandSender = ConsoleCommandSender.get();
+        BestCommandSender commandSender = defaultSender;
 
         Optional<User> user = plugin.getUserManager().getUser(((Player) bukkitSender).getUniqueId());
 
@@ -78,7 +81,7 @@ public class BukkitCommandInjector implements CommandInjector {
   }
 
   @SuppressWarnings("unchecked")
-  private void executeMainCommand(pl.bestguilds.api.command.CommandSender sender, Arguments arguments) {
+  private void executeMainCommand(BestCommandSender sender, Arguments arguments) {
     final Command command = plugin.getCommandManager().getMainCommand();
     command.getExecutor().execute(sender, arguments);
   }

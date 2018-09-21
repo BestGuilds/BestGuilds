@@ -2,7 +2,6 @@ package pl.bestguilds.bukkit.user;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import org.bukkit.Bukkit;
@@ -10,9 +9,9 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.UserStatistics;
+import pl.bestguilds.bukkit.util.ChatColorUtil;
 import pl.bestguilds.user.BestUser;
 import pl.bestguilds.user.BestUserBuilder;
-import pl.bestguilds.bukkit.util.ChatColorUtil;
 
 public class BukkitUser extends BestUser {
 
@@ -38,7 +37,7 @@ public class BukkitUser extends BestUser {
     Player player = playerReference.get();
 
     if (player == null || !player.isOnline()) {
-      return Optional.empty();
+      return Optional.ofNullable(Bukkit.getPlayer(uuid));
     }
 
     return Optional.of(player);

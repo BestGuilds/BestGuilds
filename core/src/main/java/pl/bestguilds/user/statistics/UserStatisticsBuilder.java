@@ -1,21 +1,21 @@
-package pl.bestguilds.user.statistic;
+package pl.bestguilds.user.statistics;
 
 import pl.bestguilds.api.user.UserStatistics;
 import pl.bestguilds.api.user.UserStatistics.Builder;
 
-public class UserStatisticBuilder implements UserStatistics.Builder {
+public class UserStatisticsBuilder implements UserStatistics.Builder {
 
-  private int points;
-  private int kills;
-  private int deaths;
-  private int assists;
+  private float points;
+  private int   kills;
+  private int   deaths;
+  private int   assists;
 
-  UserStatisticBuilder() {
+  UserStatisticsBuilder() {
     this.points = 500;
   }
 
   @Override
-  public Builder points(int points) {
+  public Builder points(float points) {
     this.points = points;
     return this;
   }
@@ -40,6 +40,6 @@ public class UserStatisticBuilder implements UserStatistics.Builder {
 
   @Override
   public UserStatistics build() {
-    return new UserStatisticImpl(points, kills, deaths, assists);
+    return new UserStatisticsImpl(points, kills, deaths, assists);
   }
 }
