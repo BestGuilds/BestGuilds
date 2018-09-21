@@ -43,7 +43,7 @@ public class BukkitCommandInjector implements CommandInjector {
 
   @SuppressWarnings("unchecked")
   private BukkitCommand bukkit() {
-    final CommandImpl command = plugin.getCommandManager().getMainCommand();
+    final Command command = plugin.getCommandManager().getMainCommand();
 
     return new BukkitCommand(command.getName(), "", "", Arrays.asList(command.getAliases())) {
       @Override
@@ -79,7 +79,7 @@ public class BukkitCommandInjector implements CommandInjector {
 
   @SuppressWarnings("unchecked")
   private void executeMainCommand(pl.bestguilds.api.command.CommandSender sender, Arguments arguments) {
-    final CommandImpl command = plugin.getCommandManager().getMainCommand();
+    final Command command = plugin.getCommandManager().getMainCommand();
     command.getExecutor().execute(sender, arguments);
   }
 }
