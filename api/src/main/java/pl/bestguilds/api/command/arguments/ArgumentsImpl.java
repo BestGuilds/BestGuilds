@@ -77,15 +77,4 @@ final class ArgumentsImpl implements Arguments {
       throw new ArgumentsException("Cannot parse " + content + " to double.");
     }
   }
-
-  @Override
-  public boolean asBoolean(int index) throws ArgumentsException {
-    final String content = asString(index);
-
-    try {
-      return Boolean.getBoolean(content);
-    } catch (CommandException exception) {
-      throw new ArgumentsException("Cannot parse " + content + " to boolean.");
-    }
-  }
 }

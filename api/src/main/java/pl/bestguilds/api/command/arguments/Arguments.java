@@ -25,6 +25,4 @@ public interface Arguments {
   long asLong(int index) throws ArgumentsException;
 
   double asDouble(int index) throws ArgumentsException;
-
-  boolean asBoolean(int index) throws ArgumentsException;
 }
