@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import pl.bestguilds.api.BestGuildsAPI;
+import pl.bestguilds.api.command.Command;
 import pl.bestguilds.api.command.CommandImpl;
 import pl.bestguilds.api.command.CommandException;
 import pl.bestguilds.api.command.CommandInjector;
@@ -49,12 +50,10 @@ public class BukkitCommandInjector implements CommandInjector {
       public boolean execute(CommandSender bukkitSender, String x, String[] bukkitArgs) {
         pl.bestguilds.api.command.CommandSender commandSender = ConsoleCommandSender.get();
 
-        if (bukkitSender instanceof Player) {
-          Optional<User> user = plugin.getUserManager().getUser(((Player) bukkitSender).getUniqueId());
+        Optional<User> user = plugin.getUserManager().getUser(((Player) bukkitSender).getUniqueId());
 
-          if (user.isPresent()) {
-            commandSender = user.get();
-          }
+        if (user.isPresent()) {
+          commandSender = user.get();
         }
 
         if (bukkitArgs.length < 1) {
@@ -65,7 +64,7 @@ public class BukkitCommandInjector implements CommandInjector {
         List<String> newArgs = Arrays.asList(bukkitArgs).subList(2, bukkitArgs.length);
         final Arguments args = Arguments.of((String[]) newArgs.toArray());
 
-        Optional<CommandImpl> subCommand = plugin.getCommandManager().getCommand(bukkitArgs[1]);
+        Optional<Command> subCommand = plugin.getCommandManager().getCommand(bukkitArgs[1]);
 
         if (subCommand.isPresent()) {
           subCommand.get().getExecutor().execute(commandSender, args);
