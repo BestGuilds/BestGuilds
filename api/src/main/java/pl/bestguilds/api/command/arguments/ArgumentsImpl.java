@@ -57,17 +57,6 @@ final class ArgumentsImpl implements Arguments {
   }
 
   @Override
-  public long asLong(int index) throws ArgumentsException {
-    final String content = asString(index);
-
-    try {
-      return NumberUtil.parseLong(content);
-    } catch (NumberFormatException exception) {
-      throw new ArgumentsException("Cannot parse " + content + " to long.");
-    }
-  }
-
-  @Override
   public double asDouble(int index) throws ArgumentsException {
     final String content = asString(index);
 

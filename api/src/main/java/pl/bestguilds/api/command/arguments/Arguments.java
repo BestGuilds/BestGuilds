@@ -22,7 +22,5 @@ public interface Arguments {
 
   int asInt(int index) throws ArgumentsException;
 
-  long asLong(int index) throws ArgumentsException;
-
   double asDouble(int index) throws ArgumentsException;
 }
