@@ -1,5 +1,5 @@
 # BestGuilds
-[![][license img]][license]
+[![Build Status](https://travis-ci.org/BestGuilds/BestGuilds.svg?branch=master)](s://travis-ci.org/BestGuilds/BestGuilds) [![][license img]][license]
 
 ## Download
 [Click](https://github.com/BestGuilds/BestGuilds/releases)
