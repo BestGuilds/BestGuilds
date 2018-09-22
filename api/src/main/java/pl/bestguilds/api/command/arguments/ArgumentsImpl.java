@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.util.NumberUtil;
 
 final class ArgumentsImpl implements Arguments {
 
@@ -49,7 +48,7 @@ final class ArgumentsImpl implements Arguments {
     final String content = asString(index);
 
     try {
-      return NumberUtil.parseInt(content);
+      return Integer.parseInt(content);
     } catch (NumberFormatException exception) {
       throw new ArgumentsException("Cannot parse " + content + " to int.");
     }
@@ -62,7 +61,7 @@ final class ArgumentsImpl implements Arguments {
     try {
       return Float.parseFloat(content);
     } catch (NumberFormatException exception) {
-      throw new ArgumentsException("Cannot parse " + content + " to double.");
+      throw new ArgumentsException("Cannot parse " + content + " to float.");
     }
   }
 
@@ -71,7 +70,7 @@ final class ArgumentsImpl implements Arguments {
     final String content = asString(index);
 
     try {
-      return NumberUtil.parseDouble(content);
+      return Double.parseDouble(content);
     } catch (NumberFormatException exception) {
       throw new ArgumentsException("Cannot parse " + content + " to double.");
     }
