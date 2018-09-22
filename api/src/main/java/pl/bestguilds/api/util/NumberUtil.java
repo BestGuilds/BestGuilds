@@ -15,6 +15,10 @@ public final class NumberUtil {
     return Long.parseLong(content);
   }
 
+  public static float parseFloat(@NotNull String content) throws NumberFormatException {
+    return Float.parseFloat(content);
+  }
+
   public static double parseDouble(@NotNull String content) throws NumberFormatException {
     return Double.parseDouble(content);
   }

@@ -56,6 +56,17 @@ final class ArgumentsImpl implements Arguments {
   }
 
   @Override
+  public float asFloat(int index) throws ArgumentsException {
+    final String content = asString(index);
+
+    try {
+      return Float.parseFloat(content);
+    } catch (NumberFormatException exception) {
+      throw new ArgumentsException("Cannot parse " + content + " to double.");
+    }
+  }
+
+  @Override
   public double asDouble(int index) throws ArgumentsException {
     final String content = asString(index);
 

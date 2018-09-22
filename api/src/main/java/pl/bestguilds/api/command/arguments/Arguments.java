@@ -22,5 +22,7 @@ public interface Arguments {
 
   int asInt(int index) throws ArgumentsException;
 
+  float asFloat(int index) throws ArgumentsException;
+
   double asDouble(int index) throws ArgumentsException;
 }
