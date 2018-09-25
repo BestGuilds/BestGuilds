@@ -1,12 +1,17 @@
 repositories {
     maven {
-        name 'spigot-repo'
-        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        name 'papermc'
+        url 'https://papermc.io/repo/repository/maven-public/'
+    }
+    
+    maven {
+        name 'sonatype'
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
 }
 
 dependencies {
     compile project(':core')
 
-    compile 'org.bukkit:bukkit:1.13.1-R0.1-SNAPSHOT'
+    compile 'com.destroystokyo.paper:paper-api:1.13.1-R0.1-SNAPSHOT'
 }
