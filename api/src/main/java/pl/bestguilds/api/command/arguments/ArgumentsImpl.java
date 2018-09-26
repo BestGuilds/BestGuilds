@@ -1,7 +1,6 @@
 package pl.bestguilds.api.command.arguments;
 
 import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import org.jetbrains.annotations.NotNull;
@@ -10,8 +9,8 @@ final class ArgumentsImpl implements Arguments {
 
   private final List<String> args;
 
-  ArgumentsImpl(String[] args) {
-    this.args = Arrays.asList(args);
+  ArgumentsImpl(List<String> args) {
+    this.args = args;
   }
 
   @Override

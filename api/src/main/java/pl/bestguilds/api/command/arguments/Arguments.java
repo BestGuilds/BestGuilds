@@ -1,12 +1,18 @@
 package pl.bestguilds.api.command.arguments;
 
 import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 import org.jetbrains.annotations.NotNull;
 
 public interface Arguments {
 
   static Arguments of(String[] args) {
+    return of(Arrays.asList(args));
+  }
+
+  static Arguments of(List<String> args) {
     return new ArgumentsImpl(args);
   }
 

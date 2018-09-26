@@ -65,7 +65,7 @@ public class BukkitCommandInjector implements CommandInjector {
         }
 
         List<String> newArgs = Arrays.asList(bukkitArgs).subList(2, bukkitArgs.length);
-        final Arguments args = Arguments.of((String[]) newArgs.toArray());
+        final Arguments args = Arguments.of(newArgs);
 
         Optional<Command> subCommand = plugin.getCommandManager().getCommand(bukkitArgs[1]);
 
