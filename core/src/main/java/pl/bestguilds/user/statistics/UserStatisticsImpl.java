@@ -8,15 +8,21 @@ import pl.bestguilds.api.user.UserStatistics;
 public class UserStatisticsImpl implements UserStatistics {
 
   private float points;
-  private int kills;
-  private int deaths;
-  private int assists;
+  private int   kills;
+  private int   deaths;
+  private int   assists;
 
   UserStatisticsImpl(float points, int kills, int deaths, int assists) {
     this.points = points;
     this.kills = kills;
     this.deaths = deaths;
     this.assists = assists;
+  }
+
+  @NotNull
+  @Contract(" -> new")
+  public static UserStatisticsBuilder builder() {
+    return new UserStatisticsBuilder();
   }
 
   @Override
@@ -57,12 +63,6 @@ public class UserStatisticsImpl implements UserStatistics {
   @Override
   public void setAssists(int assists) {
     this.assists = assists;
-  }
-
-  @NotNull
-  @Contract(" -> new")
-  public static UserStatisticsBuilder builder() {
-    return new UserStatisticsBuilder();
   }
 
   @Override

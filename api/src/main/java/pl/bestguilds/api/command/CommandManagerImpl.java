@@ -3,14 +3,15 @@ package pl.bestguilds.api.command;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.util.Iterables;
 
+import java.util.Optional;
+
 public final class CommandManagerImpl implements CommandManager {
 
-  private       Command                mainCommand;
   private final BiMap<Command, String> subCommands;
+  private       Command                mainCommand;
 
   public CommandManagerImpl() {
     this.subCommands = HashBiMap.create();

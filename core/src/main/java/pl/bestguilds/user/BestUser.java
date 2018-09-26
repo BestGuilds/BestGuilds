@@ -2,12 +2,10 @@ package pl.bestguilds.user;
 
 import com.google.common.base.MoreObjects;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.BestGuildsPlugin;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.UserStatistics;
 
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;

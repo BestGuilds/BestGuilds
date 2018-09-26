@@ -1,13 +1,14 @@
 package pl.bestguilds.guild;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.Guild.Builder;
 import pl.bestguilds.api.guild.GuildMember;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class GuildBuilder implements Guild.Builder {
 

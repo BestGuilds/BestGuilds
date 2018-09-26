@@ -21,6 +21,8 @@ public interface User extends BestCommandSender {
 
   void sendMessage(@NotNull String content);
 
+  public enum UpdateType {KILL, DEATH, ASSIST, QUIT, JOIN}
+
   interface Builder extends pl.bestguilds.api.util.Builder<User> {
 
     Builder uuid(@NotNull UUID uuid);
@@ -31,6 +33,4 @@ public interface User extends BestCommandSender {
 
     Builder guildMember(@NotNull GuildMember guild);
   }
-
-  public enum UpdateType {KILL, DEATH, ASSIST, QUIT, JOIN}
 }

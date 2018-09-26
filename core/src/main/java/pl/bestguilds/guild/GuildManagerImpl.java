@@ -1,13 +1,14 @@
 package pl.bestguilds.guild;
 
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildManager;
 import pl.bestguilds.api.util.Iterables;
+
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class GuildManagerImpl implements GuildManager {
 

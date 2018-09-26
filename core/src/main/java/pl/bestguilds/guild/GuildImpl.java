@@ -25,6 +25,12 @@ public class GuildImpl implements Guild {
     this.allies = allies;
   }
 
+  @NotNull
+  @Contract(" -> new")
+  public static GuildBuilder builder() {
+    return new GuildBuilder();
+  }
+
   @Override
   public String getTag() {
     return tag;
@@ -48,12 +54,6 @@ public class GuildImpl implements Guild {
   @Override
   public void addMember(@NotNull User user) {
     addMember(new GuildMemberImpl(this, user));
-  }
-
-  @NotNull
-  @Contract(" -> new")
-  public static GuildBuilder builder() {
-    return new GuildBuilder();
   }
 
   @Override

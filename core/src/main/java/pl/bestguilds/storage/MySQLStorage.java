@@ -7,10 +7,6 @@ import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.storage.Storage;
 import pl.bestguilds.api.user.User;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -20,11 +16,11 @@ import java.sql.Statement;
  */
 public class MySQLStorage implements Storage {
 
-  private final BestGuildsAPI plugin;
-  private final HikariConfig hikariConfig;
-  private HikariDataSource hikariDataSource;
+  private final BestGuildsAPI    plugin;
+  private final HikariConfig     hikariConfig;
+  private       HikariDataSource hikariDataSource;
 
-  public MySQLStorage(BestGuildsAPI plugin, HikariConfig hikariConfig){
+  public MySQLStorage(BestGuildsAPI plugin, HikariConfig hikariConfig) {
 
     this.plugin = plugin;
     this.hikariConfig = hikariConfig;
@@ -36,17 +32,17 @@ public class MySQLStorage implements Storage {
     Statement statement = hikariDataSource.getConnection().createStatement();
     //TODO: CREATE TABLES
     ResultSet resultSet = statement.executeQuery("SELECT * FROM bestguilds_guilds");
-    while (resultSet.next()){
+    while (resultSet.next()) {
       //TODO: LOAD GUILDS
     }
     resultSet = statement.executeQuery("SELECT * FROM bestguilds_users");
-    while (resultSet.next()){
+    while (resultSet.next()) {
       //TODO: LOAD USERS
     }
   }
 
   @Override
-  public void disconnect() throws Exception{
+  public void disconnect() throws Exception {
     hikariDataSource.close();
   }
 

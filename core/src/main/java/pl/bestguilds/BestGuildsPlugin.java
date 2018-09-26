@@ -21,7 +21,7 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
   private final GuildManager   guildManager;
   private final CommandManager commandManager;
   private final Storage        storage;
-  private final File dataFolder;
+  private final File           dataFolder;
 
   public BestGuildsPlugin(File dataFolder) {
     this.dataFolder = dataFolder;

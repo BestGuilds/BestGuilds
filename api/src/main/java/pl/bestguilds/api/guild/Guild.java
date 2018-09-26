@@ -1,9 +1,10 @@
 package pl.bestguilds.api.guild;
 
 import com.google.common.collect.ImmutableSet;
-import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
+
+import java.util.Set;
 
 public interface Guild {
 
@@ -25,6 +26,8 @@ public interface Guild {
 
   boolean isAlly(@NotNull Guild guild);
 
+  public enum UpdateType {}
+
   interface Builder extends pl.bestguilds.api.util.Builder<Guild> {
 
     Builder tag(@NotNull String tag);
@@ -35,6 +38,4 @@ public interface Guild {
 
     Builder allies(@NotNull Set<Guild> allies);
   }
-
-  public enum UpdateType{  }
 }

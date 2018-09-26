@@ -1,8 +1,9 @@
 package pl.bestguilds.api.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Optional;
 import java.util.function.Predicate;
-import org.jetbrains.annotations.NotNull;
 
 public final class Iterables {
 
