@@ -2,13 +2,14 @@ package pl.bestguilds.guild;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableSet;
-import java.util.Objects;
-import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
+
+import java.util.Objects;
+import java.util.Set;
 
 public class GuildImpl implements Guild {
 
@@ -103,4 +104,5 @@ public class GuildImpl implements Guild {
         .add("allies", allies)
         .toString();
   }
+
 }

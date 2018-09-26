@@ -1,13 +1,16 @@
 package pl.bestguilds.user;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.BestGuildsPlugin;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.UserStatistics;
+
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 public abstract class BestUser implements User {
 
@@ -21,6 +24,7 @@ public abstract class BestUser implements User {
     this.name = name;
     this.statistics = statistics;
   }
+
 
   @Override
   public UUID getUUID() {

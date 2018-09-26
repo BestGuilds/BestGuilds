@@ -35,4 +35,6 @@ public interface Guild {
 
     Builder allies(@NotNull Set<Guild> allies);
   }
+
+  public enum UpdateType{  }
 }

@@ -1,10 +1,11 @@
 package pl.bestguilds.api.user;
 
-import java.util.Optional;
-import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.command.BestCommandSender;
 import pl.bestguilds.api.guild.GuildMember;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public interface User extends BestCommandSender {
 
@@ -30,4 +31,6 @@ public interface User extends BestCommandSender {
 
     Builder guildMember(@NotNull GuildMember guild);
   }
+
+  public enum UpdateType {KILL, DEATH, ASSIST, QUIT, JOIN}
 }
