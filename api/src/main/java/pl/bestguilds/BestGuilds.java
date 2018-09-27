@@ -1,11 +1,10 @@
 package pl.bestguilds;
 
+import java.util.Optional;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.BestGuildsAPI;
-
-import java.util.Optional;
 
 public final class BestGuilds {
 

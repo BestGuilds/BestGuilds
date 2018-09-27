@@ -1,5 +1,6 @@
 package pl.bestguilds;
 
+import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.command.CommandInjector;
@@ -13,15 +14,13 @@ import pl.bestguilds.command.sub.CreateGuildCommand;
 import pl.bestguilds.guild.GuildManagerImpl;
 import pl.bestguilds.user.UserManagerImpl;
 
-import java.io.File;
-
 public final class BestGuildsPlugin implements BestGuildsAPI {
 
+  private final File           dataFolder;
+  private final Storage        storage;
   private final UserManager    userManager;
   private final GuildManager   guildManager;
   private final CommandManager commandManager;
-  private final Storage        storage;
-  private final File           dataFolder;
 
   public BestGuildsPlugin(File dataFolder) {
     this.dataFolder = dataFolder;
@@ -30,6 +29,7 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
     this.guildManager = new GuildManagerImpl();
     this.commandManager = new CommandManagerImpl();
     BestGuilds.setInstance(this);
+
   }
 
   public void registerCommands(@NotNull CommandInjector injector) {
@@ -38,6 +38,16 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
         new CreateGuildCommand(this)
     );
     injector.inject();
+  }
+
+  @Override
+  public @NotNull File getDataFolder() {
+    return dataFolder;
+  }
+
+  @Override
+  public @NotNull Storage getStorage() {
+    return storage;
   }
 
   @Override
@@ -53,15 +63,5 @@ public final class BestGuildsPlugin implements BestGuildsAPI {
   @Override
   public @NotNull CommandManager getCommandManager() {
     return commandManager;
-  }
-
-  @Override
-  public @NotNull Storage getStorage() {
-    return storage;
-  }
-
-  @Override
-  public @NotNull File getDataFolder() {
-    return dataFolder;
   }
 }

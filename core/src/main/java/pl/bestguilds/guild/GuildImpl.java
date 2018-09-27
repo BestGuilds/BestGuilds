@@ -1,24 +1,27 @@
 package pl.bestguilds.guild;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 
-import java.util.Objects;
-import java.util.Set;
-
 public class GuildImpl implements Guild {
 
+  private final UUID             uuid;
   private final String           tag;
   private final String           name;
   private final Set<GuildMember> members;
   private final Set<Guild>       allies;
 
   GuildImpl(String tag, String name, Set<GuildMember> members, Set<Guild> allies) {
+    this.uuid = UUID.nameUUIDFromBytes(("guild: " + tag + "-" + name).getBytes(Charsets.UTF_8));
     this.tag = tag;
     this.name = name;
     this.members = members;
@@ -29,6 +32,11 @@ public class GuildImpl implements Guild {
   @Contract(" -> new")
   public static GuildBuilder builder() {
     return new GuildBuilder();
+  }
+
+  @Override
+  public UUID getUUID() {
+    return uuid;
   }
 
   @Override
@@ -104,5 +112,4 @@ public class GuildImpl implements Guild {
         .add("allies", allies)
         .toString();
   }
-
 }

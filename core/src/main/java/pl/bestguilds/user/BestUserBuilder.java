@@ -1,24 +1,23 @@
 package pl.bestguilds.user;
 
+import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.GuildMember;
+import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.User.Builder;
-import pl.bestguilds.api.user.UserStatistics;
-
-import java.util.UUID;
 
 public abstract class BestUserBuilder implements User.Builder {
 
   @Nullable
-  protected UUID           uuid;
+  protected UUID        uuid;
   @Nullable
-  protected String         name;
+  protected String      name;
   @Nullable
-  protected UserStatistics statistics;
+  protected Statistics  statistics;
   @Nullable
-  protected GuildMember    guildMember;
+  protected GuildMember guildMember;
 
   protected BestUserBuilder() {
   }
@@ -36,7 +35,7 @@ public abstract class BestUserBuilder implements User.Builder {
   }
 
   @Override
-  public Builder statistics(@NotNull UserStatistics statistics) {
+  public Builder statistics(@NotNull Statistics statistics) {
     this.statistics = statistics;
     return this;
   }

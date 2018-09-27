@@ -8,6 +8,7 @@ import org.bson.Document;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.storage.Storage;
+import pl.bestguilds.api.storage.StorageException;
 import pl.bestguilds.api.user.User;
 
 /**
@@ -37,7 +38,7 @@ public class MongoDBStorage implements Storage {
   }
 
   @Override
-  public void connect() throws Exception {
+  public void connect() throws StorageException {
     clientAsync = MongoClients.create(mongoURL);
     databaseAsync = clientAsync.getDatabase(mongoDatabase);
     usersAsync = databaseAsync.getCollection("bestguilds_users");
@@ -56,7 +57,7 @@ public class MongoDBStorage implements Storage {
   }
 
   @Override
-  public void disconnect() throws Exception {
+  public void disconnect() throws StorageException {
     clientAsync.close();
     client.close();
   }
@@ -70,5 +71,4 @@ public class MongoDBStorage implements Storage {
   public void update(Guild guild, Guild.UpdateType type, Object... objects) {
 
   }
-
 }

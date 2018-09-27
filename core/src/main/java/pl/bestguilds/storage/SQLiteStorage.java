@@ -1,8 +1,10 @@
 package pl.bestguilds.storage;
 
+import java.sql.SQLException;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.storage.Storage;
+import pl.bestguilds.api.storage.StorageException;
 import pl.bestguilds.api.user.User;
 
 import java.io.File;
@@ -34,25 +36,33 @@ public class SQLiteStorage implements Storage {
   }
 
   @Override
-  public void connect() throws Exception {
-    Class.forName("org.sqlite.JDBC");
-    connection = DriverManager.getConnection("jdbc:sqlite:" + this.databaseFile.getPath());
-    Statement statement = connection.createStatement();
-    //TODO: CREATE TABLES
-    ResultSet resultSet = statement.executeQuery("SELECT * FROM bestguilds_guilds");
-    while (resultSet.next()) {
-      //TODO: LOAD GUILDS
+  public void connect() throws StorageException {
+    try {
+      Class.forName("org.sqlite.JDBC");
+      connection = DriverManager.getConnection("jdbc:sqlite:" + this.databaseFile.getPath());
+      Statement statement = connection.createStatement();
+      //TODO: CREATE TABLES
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM bestguilds_guilds");
+      while (resultSet.next()) {
+        //TODO: LOAD GUILDS
+      }
+      resultSet = statement.executeQuery("SELECT * FROM bestguilds_users");
+      while (resultSet.next()) {
+        //TODO: LOAD USERS
+      }
+      statement.close();
+    } catch (SQLException | ClassNotFoundException exception) {
+      throw new StorageException(exception);
     }
-    resultSet = statement.executeQuery("SELECT * FROM bestguilds_users");
-    while (resultSet.next()) {
-      //TODO: LOAD USERS
-    }
-    statement.close();
   }
 
   @Override
-  public void disconnect() throws Exception {
-    connection.close();
+  public void disconnect() throws StorageException {
+    try {
+      connection.close();
+    } catch (SQLException exception) {
+      throw new RuntimeException(exception);
+    }
   }
 
   @Override
@@ -64,5 +74,4 @@ public class SQLiteStorage implements Storage {
   public void update(Guild guild, Guild.UpdateType type, Object... objects) {
 
   }
-
 }
