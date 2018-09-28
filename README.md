@@ -1,14 +1,23 @@
 # BestGuilds
-[![Build Status](https://travis-ci.org/BestGuilds/BestGuilds.svg?branch=master)](s://travis-ci.org/BestGuilds/BestGuilds) [![][license img]][license]
+[![][travis img]][travis] [![][appveyor img]][appveyor] [![][license img]][license] [![][discord img]][discord]
 
 ## Download
-[Click](https://github.com/BestGuilds/BestGuilds/releases)
+[Releases](https://github.com/BestGuilds/BestGuilds/releases)
 
 ## TODO
 - Maven Repo
 
-## Ideas
-if have you idea, please write [here](https://github.com/BestGuilds/BestGuilds/issues).
+## Ideas / Bugs
+if have you idea or bug, please write [here](https://github.com/BestGuilds/BestGuilds/issues).
+
+[travis]: https://travis-ci.org/BestGuilds/BestGuilds
+[travis img]: https://travis-ci.org/BestGuilds/BestGuilds.svg?branch=master
+
+[appveyor]: https://ci.appveyor.com/project/BestGuilds/BestGuilds
+[appveyor img]: https://ci.appveyor.com/api/projects/status/p9yyj3pkuj8vhsrn?svg=true
 
 [license]:LICENSE
-[license img]:https://img.shields.io/badge/license-GNU%203-blue.svg
+[license img]:https://img.shields.io/badge/license-GNU%203-gold.svg
+
+[discord]:https://discord.gg/Y8bKr52
+[discord img]:https://img.shields.io/badge/discord-bestguilds-738bd7.svg?style=square
