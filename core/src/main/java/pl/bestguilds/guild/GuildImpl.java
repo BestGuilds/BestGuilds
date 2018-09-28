@@ -95,17 +95,18 @@ public class GuildImpl implements Guild {
     }
 
     GuildImpl that = (GuildImpl) object;
-    return this.tag.equals(that.tag);
+    return this.uuid.equals(that.uuid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.tag, this.name, this.members, this.allies);
+    return Objects.hash(this.uuid, this.tag, this.name, this.members, this.allies);
   }
 
   @Override
   public String toString() {
     return MoreObjects.toStringHelper(this)
+        .add("uuid", uuid)
         .add("tag", tag)
         .add("name", name)
         .add("members", members)
