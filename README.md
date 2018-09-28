@@ -1,5 +1,5 @@
 # BestGuilds
-[![][travis img]][travis] [![][appveyor img]][appveyor] [![][license img]][license] [![][discord img]][discord]
+[![][travis img]][travis] [![][license img]][license] [![][discord img]][discord]
 
 ## Download
 [Releases](https://github.com/BestGuilds/BestGuilds/releases)
@@ -12,9 +12,6 @@ if have you idea or bug, please write [here](https://github.com/BestGuilds/BestG
 
 [travis]: https://travis-ci.org/BestGuilds/BestGuilds
 [travis img]: https://travis-ci.org/BestGuilds/BestGuilds.svg?branch=master
-
-[appveyor]: https://ci.appveyor.com/project/BestGuilds/BestGuilds
-[appveyor img]: https://ci.appveyor.com/api/projects/status/p9yyj3pkuj8vhsrn?svg=true
 
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/license-GNU%203-gold.svg
