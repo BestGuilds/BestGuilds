@@ -1,6 +1,15 @@
 # BestGuilds
 [![][travis img]][travis] [![][license img]][license] [![][discord img]][discord]
 
+## About
+BestGuilds is fully customizable RPG plugin that allows you to create your own guilds and manage them. Our plugin has a lot of features.
+For example:
+- It's very stable.
+- It supports many databases (SQL and NoSQL)
+- Our support is very friendly.
+- Api is easy to use and understand.
+- Project is open-source and it's developed by experienced programmers.
+
 ## Download
 [Releases](https://github.com/BestGuilds/BestGuilds/releases)
 
