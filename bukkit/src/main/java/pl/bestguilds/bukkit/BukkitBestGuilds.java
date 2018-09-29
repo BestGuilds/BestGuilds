@@ -23,7 +23,7 @@ public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI 
     this.plugin = new BestGuildsPlugin();
     CommandInjector commandInjector = new BukkitCommandInjector(this);
     this.plugin.registerCommands(commandInjector);
-    this.updater.init();
+    this.updater.init(this);
     try {
       this.updater.checkForUpdates();
     } catch (Exception e) {

@@ -7,9 +7,7 @@ import java.beans.ConstructorProperties;
 
 public final class ChatColorUtil {
 
-  @ConstructorProperties("")
-  private ChatColorUtil() {
-  }
+  private ChatColorUtil() { }
 
   @NotNull
   public static String colored(@NotNull String content) {

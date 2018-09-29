@@ -20,10 +20,7 @@ public final class Updater {
 
   private final Logger loggger = Bukkit.getLogger();
 
-  @ConstructorProperties("")
-  private Updater() {
 
-  }
 
   private final HttpClient client = HttpClient.newBuilder()
           .version(HttpClient.Version.HTTP_2)
@@ -42,7 +39,7 @@ public final class Updater {
 
   private String ver;
 
-  public final void init(Plugin plugin) {
+  public  void init(Plugin plugin) {
     ver = plugin.getDescription().getVersion();
   }
 
