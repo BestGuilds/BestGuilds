@@ -39,9 +39,7 @@ public final class Updater {
 
   private String ver;
 
-  public  void init(Plugin plugin) {
-    ver = plugin.getDescription().getVersion();
-  }
+  public  void init(Plugin plugin) { ver = plugin.getDescription().getVersion(); }
 
   public final void checkForUpdates() {
     try {
