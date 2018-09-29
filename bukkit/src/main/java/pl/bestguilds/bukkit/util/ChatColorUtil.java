@@ -3,8 +3,11 @@ package pl.bestguilds.bukkit.util;
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
 
+import java.beans.ConstructorProperties;
+
 public final class ChatColorUtil {
 
+  @ConstructorProperties("")
   private ChatColorUtil() {
   }
 
@@ -12,4 +15,5 @@ public final class ChatColorUtil {
   public static String colored(@NotNull String content) {
     return ChatColor.translateAlternateColorCodes('&', content);
   }
+
 }
