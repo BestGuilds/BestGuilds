@@ -15,7 +15,6 @@ import pl.bestguilds.api.command.Command;
 import pl.bestguilds.api.command.CommandException;
 import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.ConsoleCommandSender;
-import pl.bestguilds.api.command.ConsoleCommandSender.Impl;
 import pl.bestguilds.api.command.arguments.Arguments;
 import pl.bestguilds.api.user.User;
 
@@ -27,7 +26,7 @@ public class BukkitCommandInjector implements CommandInjector {
 
   public BukkitCommandInjector(BestGuildsAPI plugin) {
     this.plugin = plugin;
-    this.defaultSender = new ConsoleCommandSender.Impl();
+    this.defaultSender = new ConsoleCommandSender();
 
     try {
       Field field = Bukkit.getServer().getClass().getDeclaredField("commandMap");

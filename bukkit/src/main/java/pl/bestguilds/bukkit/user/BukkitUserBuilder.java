@@ -1,8 +1,9 @@
 package pl.bestguilds.bukkit.user;
 
-import java.util.Objects;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.user.BestUserBuilder;
+
+import java.util.Objects;
 
 public class BukkitUserBuilder extends BestUserBuilder {
 
@@ -18,8 +19,9 @@ public class BukkitUserBuilder extends BestUserBuilder {
 
     User user = new BukkitUser(uuid, name, statistics);
 
-    if (guildMember != null)
+    if (guildMember != null) {
       user.setGuildMember(guildMember);
+    }
 
     return user;
   }

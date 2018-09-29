@@ -6,17 +6,19 @@ import java.util.Optional;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.GuildMember;
+import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.api.user.UserStatistics;
+import pl.bestguilds.statistics.StatisticsImpl;
 
-public abstract class BestUser implements User {
+public abstract class BestUser extends StatisticsImpl implements User {
 
-  protected final UUID           uuid;
-  private final   String         name;
-  private final   UserStatistics statistics;
-  private         GuildMember    guildMember;
+  protected final UUID        uuid;
+  private final   String      name;
+  private final   Statistics  statistics;
+  private         GuildMember guildMember;
 
-  public BestUser(UUID uuid, String name, UserStatistics statistics) {
+  public BestUser(UUID uuid, String name, Statistics statistics) {
+    super(statistics);
     this.uuid = uuid;
     this.name = name;
     this.statistics = statistics;
@@ -33,7 +35,7 @@ public abstract class BestUser implements User {
   }
 
   @Override
-  public UserStatistics getStatistics() {
+  public Statistics getStatistics() {
     return statistics;
   }
 

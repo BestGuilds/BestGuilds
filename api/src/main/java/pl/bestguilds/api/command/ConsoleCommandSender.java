@@ -1,13 +1,9 @@
 package pl.bestguilds.api.command;
 
-public interface ConsoleCommandSender extends BestCommandSender {
+public class ConsoleCommandSender implements BestCommandSender {
 
   @Override
-  default String getName() {
+  public String getName() {
     return "[CONSOLE]";
-  }
-
-  class Impl implements ConsoleCommandSender {
-
   }
 }

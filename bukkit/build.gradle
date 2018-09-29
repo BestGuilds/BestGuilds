@@ -3,7 +3,7 @@ repositories {
         name 'papermc'
         url 'https://papermc.io/repo/repository/maven-public/'
     }
-    
+
     maven {
         name 'sonatype'
         url 'https://oss.sonatype.org/content/repositories/snapshots/'

@@ -2,10 +2,13 @@ package pl.bestguilds.api.guild;
 
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
+import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 
 public interface Guild {
+
+  UUID getUUID();
 
   String getTag();
 
@@ -34,5 +37,9 @@ public interface Guild {
     Builder members(@NotNull Set<GuildMember> members);
 
     Builder allies(@NotNull Set<Guild> allies);
+  }
+
+  enum UpdateType {
+
   }
 }

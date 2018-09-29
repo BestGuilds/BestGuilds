@@ -1,14 +1,13 @@
 package pl.bestguilds.bukkit;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.BestGuilds;
 import pl.bestguilds.BestGuildsPlugin;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.CommandManager;
 import pl.bestguilds.api.guild.GuildManager;
+import pl.bestguilds.api.storage.Storage;
 import pl.bestguilds.api.user.UserManager;
 import pl.bestguilds.bukkit.command.BukkitCommandInjector;
 
@@ -18,9 +17,10 @@ public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI 
 
   @Override
   public void onEnable() {
-    plugin = new BestGuildsPlugin();
+    plugin = new BestGuildsPlugin(this.getDataFolder());
     CommandInjector commandInjector = new BukkitCommandInjector(this);
     plugin.registerCommands(commandInjector);
+
   }
 
   @Override
@@ -45,4 +45,10 @@ public final class BukkitBestGuilds extends JavaPlugin implements BestGuildsAPI 
   public final CommandManager getCommandManager() {
     return plugin.getCommandManager();
   }
+
+  @Override
+  public @NotNull Storage getStorage() {
+    return plugin.getStorage();
+  }
+
 }
