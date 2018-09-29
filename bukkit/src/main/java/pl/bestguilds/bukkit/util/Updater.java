@@ -28,7 +28,7 @@ public final class Updater {
           .followRedirects(HttpClient.Redirect.NORMAL)
           .build();
 
-  private final HttpRequest request = HttpRequest.newBuilder(URI.create("http://www.google.com"))
+  private final HttpRequest request = HttpRequest.newBuilder(URI.create("http://www.github.com"))
           .timeout(Duration.ofSeconds(200))
           .header("Content-Type", "application/json")
           .version(HttpClient.Version.HTTP_2)
