@@ -15,4 +15,5 @@ public interface BestGuildsAPI {
 
   @NotNull
   CommandManager getCommandManager();
+
 }
