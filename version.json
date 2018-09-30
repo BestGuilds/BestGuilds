@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "version": "0.1",
+    "release_date": "2018-09-30",
+    "priority": "standard",
+    "changelog": [
+      "Added version checker"
+    ]
+  }
+]

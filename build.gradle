@@ -15,5 +15,6 @@ subprojects {
 
     dependencies {
         compile group: 'org.jetbrains', name: 'annotations', version: '16.0.3'
+        testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.3.1'
     }
 }
