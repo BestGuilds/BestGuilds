@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 
 public final class Updater {
 
-  //ustaw lin
   private static final String GITHUB_URL = "https://raw.githubusercontent.com/BestGuilds/BestGuilds/master/version.json";
 
   private Updater() {
