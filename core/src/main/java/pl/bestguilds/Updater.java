@@ -17,13 +17,14 @@ import java.util.logging.Logger;
 
 public final class Updater {
 
-  private static final String GITHUB_URL = "https://raw.githubusercontent.com/BestGuilds/BestGuilds/master/version.json";
+  private static final String GITHUB_RAW_URL      = "https://raw.githubusercontent.com/BestGuilds/BestGuilds/master/version.json";
+  private static final String GITHUB_RELEASES_URL = "https://github.com/BestGuilds/BestGuilds/releases/";
 
   private Updater() {
   }
 
   public static void checkVersion(final Logger logger, final String version) {
-    JsonArray array = readUrl(GITHUB_URL);
+    JsonArray array = readUrl(GITHUB_RAW_URL);
     List<JsonObject> jsonObjects = new ArrayList<>(array.size());
 
     for (JsonElement element : array) {
@@ -42,8 +43,7 @@ public final class Updater {
       logger.log(Level.INFO, "Your version: " + version + ", newest version: " + currentVersion);
       logger.log(Level.INFO, "Update Priority: " + priority);
       logger.log(Level.INFO, "ChangeLogs: " + changeLog.getAsString());
-      logger.log(Level.INFO,
-          "If you want to update your version download the newest one from: " + "https://github.com/BestGuilds/BestGuilds/releases/");
+      logger.log(Level.INFO, "If you want to update your version download the newest one from: " + GITHUB_RELEASES_URL);
     }
   }
 
@@ -57,22 +57,11 @@ public final class Updater {
     }
 
     JsonArray result;
-    BufferedReader reader = null;
 
-    try {
-      InputStreamReader input = new InputStreamReader(url.openStream(), StandardCharsets.UTF_8);
-      reader = new BufferedReader(input);
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))) {
       result = new JsonParser().parse(reader).getAsJsonArray();
     } catch (IOException exception) {
       throw new IllegalArgumentException(exception);
-    } finally {
-      if (reader != null) {
-        try {
-          reader.close();
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
     }
 
     return result;
