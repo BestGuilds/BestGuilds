@@ -4,10 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.user.UserStatistics;
+import pl.bestguilds.api.statistics.Statistics;
+import pl.bestguilds.api.user.User;
 import pl.bestguilds.bukkit.util.ChatColorUtil;
 import pl.bestguilds.user.BestUser;
-import pl.bestguilds.user.BestUserBuilder;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
@@ -18,14 +18,14 @@ public class BukkitUser extends BestUser {
 
   private Reference<Player> playerReference;
 
-  BukkitUser(UUID uuid, String name, UserStatistics statistics) {
+  BukkitUser(UUID uuid, String name, Statistics statistics) {
     super(uuid, name, statistics);
     this.playerReference = new WeakReference<>(Bukkit.getPlayer(uuid));
   }
 
   @NotNull
   @Contract(" -> new")
-  public static BestUserBuilder builder() {
+  public static User.Builder builder() {
     return new BukkitUserBuilder();
   }
 

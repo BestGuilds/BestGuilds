@@ -1,19 +1,22 @@
 package pl.bestguilds.bukkit.command;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import pl.bestguilds.api.BestGuildsAPI;
-import pl.bestguilds.api.command.*;
+import pl.bestguilds.api.command.BestCommandSender;
+import pl.bestguilds.api.command.Command;
+import pl.bestguilds.api.command.CommandException;
+import pl.bestguilds.api.command.CommandInjector;
+import pl.bestguilds.api.command.ConsoleCommandSender;
 import pl.bestguilds.api.command.arguments.Arguments;
 import pl.bestguilds.api.user.User;
-
-import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
 
 public class BukkitCommandInjector implements CommandInjector {
 
@@ -23,7 +26,7 @@ public class BukkitCommandInjector implements CommandInjector {
 
   public BukkitCommandInjector(BestGuildsAPI plugin) {
     this.plugin = plugin;
-    this.defaultSender = new ConsoleCommandSender.Impl();
+    this.defaultSender = new ConsoleCommandSender();
 
     try {
       Field field = Bukkit.getServer().getClass().getDeclaredField("commandMap");

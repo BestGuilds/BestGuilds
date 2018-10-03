@@ -43,7 +43,7 @@ public final class CommandManagerImpl implements CommandManager {
 
   @Override
   public Optional<Command> getCommand(String name) {
-    return Iterables.find(getSubCommands(), command -> command.contains(name));
+    return Iterables.findSafe(getSubCommands(), command -> command.contains(name));
   }
 
   @Override

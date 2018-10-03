@@ -1,19 +1,19 @@
 package pl.bestguilds.api.user;
 
+import java.util.Optional;
+import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.command.BestCommandSender;
 import pl.bestguilds.api.guild.GuildMember;
 
-import java.util.Optional;
-import java.util.UUID;
-
-public interface User extends BestCommandSender {
+public interface User extends BestCommandSender, Statistics {
 
   UUID getUUID();
 
   String getName();
 
-  UserStatistics getStatistics();
+  Statistics getStatistics();
 
   Optional<GuildMember> getGuildMember();
 
@@ -21,7 +21,14 @@ public interface User extends BestCommandSender {
 
   void sendMessage(@NotNull String content);
 
-  public enum UpdateType {KILL, DEATH, ASSIST, QUIT, JOIN}
+  enum UpdateType {
+    KILL,
+    DEATH,
+    ASSIST,
+    JOIN,
+    QUIT,
+    ;
+  }
 
   interface Builder extends pl.bestguilds.api.util.Builder<User> {
 
@@ -29,7 +36,7 @@ public interface User extends BestCommandSender {
 
     Builder name(@NotNull String name);
 
-    Builder statistics(@NotNull UserStatistics statistics);
+    Builder statistics(@NotNull Statistics statistics);
 
     Builder guildMember(@NotNull GuildMember guild);
   }

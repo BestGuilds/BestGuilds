@@ -5,12 +5,11 @@ import pl.bestguilds.api.user.User;
 
 public interface Storage {
 
-  void connect() throws Exception;
+  void connect() throws StorageException;
 
-  void disconnect() throws Exception;
+  void disconnect() throws StorageException;
 
   void update(User user, User.UpdateType type, Object... objects);
 
   void update(Guild guild, Guild.UpdateType type, Object... objects);
-
 }

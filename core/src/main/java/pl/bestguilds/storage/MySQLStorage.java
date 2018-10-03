@@ -2,13 +2,14 @@ package pl.bestguilds.storage;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.storage.Storage;
+import pl.bestguilds.api.storage.StorageException;
 import pl.bestguilds.api.user.User;
-
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  * Created by Xierip on 2018-09-26.
@@ -27,22 +28,27 @@ public class MySQLStorage implements Storage {
   }
 
   @Override
-  public void connect() throws Exception {
+  public void connect() throws StorageException {
     hikariDataSource = new HikariDataSource(hikariConfig);
-    Statement statement = hikariDataSource.getConnection().createStatement();
-    //TODO: CREATE TABLES
-    ResultSet resultSet = statement.executeQuery("SELECT * FROM bestguilds_guilds");
-    while (resultSet.next()) {
-      //TODO: LOAD GUILDS
-    }
-    resultSet = statement.executeQuery("SELECT * FROM bestguilds_users");
-    while (resultSet.next()) {
-      //TODO: LOAD USERS
+
+    try {
+      Statement statement = hikariDataSource.getConnection().createStatement();
+      //TODO: CREATE TABLES
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM bestguilds_guilds");
+      while (resultSet.next()) {
+        //TODO: LOAD GUILDS
+      }
+      resultSet = statement.executeQuery("SELECT * FROM bestguilds_users");
+      while (resultSet.next()) {
+        //TODO: LOAD USERS
+      }
+    } catch (SQLException exception) {
+      throw new StorageException(exception);
     }
   }
 
   @Override
-  public void disconnect() throws Exception {
+  public void disconnect() throws StorageException {
     hikariDataSource.close();
   }
 
@@ -55,5 +61,4 @@ public class MySQLStorage implements Storage {
   public void update(Guild guild, Guild.UpdateType type, Object... objects) {
 
   }
-
 }
