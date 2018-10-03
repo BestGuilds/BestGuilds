@@ -9,18 +9,18 @@ import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.User.Builder;
 
-public class BestUserBuilder implements User.Builder {
+public class UserBuilder implements User.Builder {
 
   @Nullable
-  protected UUID        uuid;
+  private UUID        uuid;
   @Nullable
-  protected String      name;
+  private String      name;
   @Nullable
-  protected Statistics  statistics;
+  private Statistics  statistics;
   @Nullable
-  protected GuildMember guildMember;
+  private GuildMember guildMember;
 
-  protected BestUserBuilder() {
+  UserBuilder() {
   }
 
   @Override
@@ -53,7 +53,7 @@ public class BestUserBuilder implements User.Builder {
     Objects.requireNonNull(name);
     Objects.requireNonNull(statistics);
 
-    User user = new BestUser(uuid, name, statistics);
+    User user = new UserImpl(uuid, name, statistics);
 
     if (guildMember != null) {
       user.setGuildMember(guildMember);

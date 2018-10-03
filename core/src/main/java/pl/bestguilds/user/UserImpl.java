@@ -1,6 +1,11 @@
 package pl.bestguilds.user;
 
 import com.google.common.base.MoreObjects;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
@@ -8,29 +13,32 @@ import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
-import pl.bestguilds.statistics.StatisticsImpl;
+import pl.bestguilds.statistics.BaseStatistics;
 import pl.bestguilds.util.ChatColorUtil;
 
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+public class UserImpl extends BaseStatistics implements User {
 
-public class BestUser extends StatisticsImpl implements User {
+  private final UUID              uuid;
+  private final String            name;
+  private final Statistics        statistics;
+  private       GuildMember       guildMember;
+  private       Reference<Player> playerReference;
 
-  protected final UUID              uuid;
-  private final   String            name;
-  private final   Statistics        statistics;
-  private         GuildMember       guildMember;
-  private         Reference<Player> playerReference;
-
-  public BestUser(UUID uuid, String name, Statistics statistics) {
-    super(statistics);
+  public UserImpl(UUID uuid, String name, Statistics statistics) {
     this.uuid = uuid;
     this.name = name;
     this.statistics = statistics;
-    this.playerReference = new WeakReference<>(Bukkit.getPlayer(uuid));
+  }
+
+  public UserImpl(@NotNull Player player) {
+    this(player.getUniqueId(), player.getName(), new BaseStatistics());
+    this.playerReference = new WeakReference<>(player);
+  }
+
+  @NotNull
+  @Contract(" -> new")
+  public static User.Builder builder() {
+    return new UserBuilder();
   }
 
   @Override
@@ -64,11 +72,11 @@ public class BestUser extends StatisticsImpl implements User {
       return true;
     }
 
-    if (!(object instanceof BestUser)) {
+    if (!(object instanceof UserImpl)) {
       return false;
     }
 
-    BestUser that = (BestUser) object;
+    UserImpl that = (UserImpl) object;
     return this.uuid.equals(that.uuid);
   }
 
@@ -87,27 +95,25 @@ public class BestUser extends StatisticsImpl implements User {
         .toString();
   }
 
-  @NotNull
-  @Contract(" -> new")
-  public static User.Builder builder() {
-    return new BestUserBuilder();
-  }
-
   @Override
   public void sendMessage(@NotNull String content) {
     getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
   }
 
+  @Override
   public final Optional<Player> getPlayer() {
-    Player player = playerReference.get();
+    Optional<Player> player = Optional.ofNullable(playerReference.get());
 
-    if (player == null || !player.isOnline()) {
-      return Optional.ofNullable(Bukkit.getPlayer(uuid));
+    if (!player.isPresent() || !player.get().isOnline()) {
+      player = Optional.ofNullable(Bukkit.getPlayer(this.uuid));
+      player.ifPresent(this::setPlayer);
+      return player;
     }
 
-    return Optional.of(player);
+    return player;
   }
 
+  @Override
   public void setPlayer(Player player) {
     this.playerReference = new WeakReference<>(player);
   }

@@ -1,6 +1,8 @@
 package pl.bestguilds.api.statistics;
 
 import java.util.Comparator;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.statistics.Statistics.StatisticsComparator.Type;
 
 public interface Statistics {
@@ -31,13 +33,13 @@ public interface Statistics {
       return (stats1, stats2) -> {
         switch (type) {
           case POINTS:
-            return (int) (stats2.getPoints() - stats1.getPoints());
+            return Float.compare(stats2.getPoints(), stats1.getPoints());
           case KILLS:
-            return (int) (stats2.getKills() - stats1.getKills());
+            return (stats2.getKills() - stats1.getKills());
           case DEATHS:
-            return (int) (stats2.getDeaths() - stats1.getDeaths());
+            return (stats2.getDeaths() - stats1.getDeaths());
           case ASSISTS:
-            return (int) (stats2.getAssists() - stats1.getAssists());
+            return (stats2.getAssists() - stats1.getAssists());
         }
         return 0;
       };

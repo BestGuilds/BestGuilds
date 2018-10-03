@@ -5,22 +5,22 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.statistics.Statistics;
 
-public class StatisticsImpl implements Statistics {
+public class BaseStatistics implements Statistics {
 
   private float points;
   private int   kills;
   private int   deaths;
   private int   assists;
 
-  StatisticsImpl(float points, int kills, int deaths, int assists) {
+  BaseStatistics(float points, int kills, int deaths, int assists) {
     this.points = points;
     this.kills = kills;
     this.deaths = deaths;
     this.assists = assists;
   }
 
-  public StatisticsImpl(@NotNull Statistics statistics) {
-    this(statistics.getPoints(), statistics.getKills(), statistics.getDeaths(), statistics.getAssists());
+  public BaseStatistics() {
+    this.points = 500; //TODO start points configuration
   }
 
   @Override
@@ -61,12 +61,6 @@ public class StatisticsImpl implements Statistics {
   @Override
   public void setAssists(int assists) {
     this.assists = assists;
-  }
-
-  @NotNull
-  @Contract(" -> new")
-  public static StatisticsBuilder statisticsBuilder() {
-    return new StatisticsBuilder();
   }
 
   @Override
