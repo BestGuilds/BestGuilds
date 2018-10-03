@@ -12,8 +12,10 @@ import java.util.Set;
 
 public class GuildBuilder implements Guild.Builder {
 
-    private @Nullable String tag;
-    private @Nullable String name;
+    @Nullable
+    private String tag;
+    @Nullable
+    private String name;
     private Set<GuildMember> members;
     private Set<Guild> allies;
 

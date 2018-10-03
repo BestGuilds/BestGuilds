@@ -29,6 +29,6 @@ public class GuildManagerImpl implements GuildManager {
 
     @Override
     public ImmutableSet<Guild> getGuilds() {
-        return ImmutableSet.copyOf(guildMap.values());
+        return ImmutableSet.copyOf(this.guildMap.values());
     }
 }

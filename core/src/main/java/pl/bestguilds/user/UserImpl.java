@@ -68,6 +68,28 @@ public class UserImpl extends BaseStatistics implements User {
     }
 
     @Override
+    public void sendMessage(@NotNull String content) {
+        getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
+    }
+
+    @Override
+    public Optional<Player> getPlayer() {
+        Optional<Player> player = Optional.ofNullable(playerReference.get());
+
+        if (!player.isPresent() || !player.get().isOnline()) {
+            player = Optional.ofNullable(Bukkit.getPlayer(this.uuid));
+            player.ifPresent(this::setPlayer);
+            return player;
+        }
+
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.playerReference = new WeakReference<>(player);
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (this == object) {
             return true;
@@ -94,26 +116,5 @@ public class UserImpl extends BaseStatistics implements User {
                 .add("statistics", statistics)
                 .add("guild", guildMember)
                 .toString();
-    }
-
-    @Override
-    public void sendMessage(@NotNull String content) {
-        getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
-    }
-
-    public final Optional<Player> getPlayer() {
-        Optional<Player> player = Optional.ofNullable(playerReference.get());
-
-        if (!player.isPresent() || !player.get().isOnline()) {
-            player = Optional.ofNullable(Bukkit.getPlayer(this.uuid));
-            player.ifPresent(this::setPlayer);
-            return player;
-        }
-
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.playerReference = new WeakReference<>(player);
     }
 }
