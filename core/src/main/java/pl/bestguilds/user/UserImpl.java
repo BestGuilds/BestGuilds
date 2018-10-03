@@ -101,7 +101,6 @@ public class UserImpl extends BaseStatistics implements User {
         getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
     }
 
-    @Override
     public final Optional<Player> getPlayer() {
         Optional<Player> player = Optional.ofNullable(playerReference.get());
 
@@ -114,7 +113,6 @@ public class UserImpl extends BaseStatistics implements User {
         return player;
     }
 
-    @Override
     public void setPlayer(Player player) {
         this.playerReference = new WeakReference<>(player);
     }

@@ -1,6 +1,5 @@
 package pl.bestguilds.api.user;
 
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.command.BestCommandSender;
 import pl.bestguilds.api.guild.GuildMember;
@@ -22,10 +21,6 @@ public interface User extends BestCommandSender, Statistics {
     void setGuildMember(@NotNull GuildMember guild);
 
     void sendMessage(@NotNull String content);
-
-    Optional<Player> getPlayer();
-
-    void setPlayer(Player player);
 
     interface Builder extends pl.bestguilds.api.util.Builder<User> {
 
