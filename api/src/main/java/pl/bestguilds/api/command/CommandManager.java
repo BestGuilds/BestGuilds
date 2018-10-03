@@ -1,9 +1,10 @@
 package pl.bestguilds.api.command;
 
 import com.google.common.collect.ImmutableSet;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.Optional;
-import org.jetbrains.annotations.NotNull;
 
 public interface CommandManager {
 

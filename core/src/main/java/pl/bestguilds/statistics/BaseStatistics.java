@@ -1,22 +1,26 @@
-package pl.bestguilds.user.statistics;
+package pl.bestguilds.statistics;
 
 import com.google.common.base.MoreObjects;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.user.UserStatistics;
+import pl.bestguilds.api.statistics.Statistics;
 
-public class UserStatisticsImpl implements UserStatistics {
+public class BaseStatistics implements Statistics {
 
   private float points;
-  private int kills;
-  private int deaths;
-  private int assists;
+  private int   kills;
+  private int   deaths;
+  private int   assists;
 
-  UserStatisticsImpl(float points, int kills, int deaths, int assists) {
+  BaseStatistics(float points, int kills, int deaths, int assists) {
     this.points = points;
     this.kills = kills;
     this.deaths = deaths;
     this.assists = assists;
+  }
+
+  public BaseStatistics() {
+    this.points = 500; //TODO start points configuration
   }
 
   @Override
@@ -57,12 +61,6 @@ public class UserStatisticsImpl implements UserStatistics {
   @Override
   public void setAssists(int assists) {
     this.assists = assists;
-  }
-
-  @NotNull
-  @Contract(" -> new")
-  public static UserStatisticsBuilder builder() {
-    return new UserStatisticsBuilder();
   }
 
   @Override

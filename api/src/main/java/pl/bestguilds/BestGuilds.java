@@ -1,6 +1,5 @@
 package pl.bestguilds;
 
-import java.util.Objects;
 import java.util.Optional;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

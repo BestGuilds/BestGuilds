@@ -1,26 +1,26 @@
 package pl.bestguilds.user;
 
+import java.util.Objects;
+import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.GuildMember;
+import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.User.Builder;
-import pl.bestguilds.api.user.UserStatistics;
 
-import java.util.UUID;
-
-public abstract class BestUserBuilder implements User.Builder {
+public class UserBuilder implements User.Builder {
 
   @Nullable
-  protected UUID           uuid;
+  private UUID        uuid;
   @Nullable
-  protected String         name;
+  private String      name;
   @Nullable
-  protected UserStatistics statistics;
+  private Statistics  statistics;
   @Nullable
-  protected GuildMember    guildMember;
+  private GuildMember guildMember;
 
-  protected BestUserBuilder() {
+  UserBuilder() {
   }
 
   @Override
@@ -36,7 +36,7 @@ public abstract class BestUserBuilder implements User.Builder {
   }
 
   @Override
-  public Builder statistics(@NotNull UserStatistics statistics) {
+  public Builder statistics(@NotNull Statistics statistics) {
     this.statistics = statistics;
     return this;
   }
@@ -45,5 +45,20 @@ public abstract class BestUserBuilder implements User.Builder {
   public Builder guildMember(@NotNull GuildMember guildMember) {
     this.guildMember = guildMember;
     return this;
+  }
+
+  @Override
+  public final User build() {
+    Objects.requireNonNull(uuid);
+    Objects.requireNonNull(name);
+    Objects.requireNonNull(statistics);
+
+    User user = new UserImpl(uuid, name, statistics);
+
+    if (guildMember != null) {
+      user.setGuildMember(guildMember);
+    }
+
+    return user;
   }
 }

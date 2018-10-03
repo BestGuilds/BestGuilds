@@ -1,11 +1,12 @@
 package pl.bestguilds.guild;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
+
+import java.util.Objects;
 
 public class GuildMemberImpl implements GuildMember {
 

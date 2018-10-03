@@ -1,9 +1,10 @@
 package pl.bestguilds.api.user;
 
 import com.google.common.collect.ImmutableSet;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Optional;
 import java.util.UUID;
-import org.jetbrains.annotations.NotNull;
 
 public interface UserManager {
 
