@@ -9,27 +9,27 @@ import java.util.function.Function;
 
 public interface Arguments {
 
-  static Arguments of(String[] args) {
-    return of(Arrays.asList(args));
-  }
+    static Arguments of(String[] args) {
+        return of(Arrays.asList(args));
+    }
 
-  static Arguments of(List<String> args) {
-    return new ArgumentsImpl(args);
-  }
+    static Arguments of(List<String> args) {
+        return new ArgumentsImpl(args);
+    }
 
-  int getSize();
+    int getSize();
 
-  ImmutableList<String> get();
+    ImmutableList<String> get();
 
-  String get(int index) throws ArgumentsException;
+    String get(int index) throws ArgumentsException;
 
-  <T> T get(int index, @NotNull Function<String, T> function) throws ArgumentsException;
+    <T> T get(int index, @NotNull Function<String, T> function) throws ArgumentsException;
 
-  String asString(int index) throws ArgumentsException;
+    String asString(int index) throws ArgumentsException;
 
-  int asInt(int index) throws ArgumentsException;
+    int asInt(int index) throws ArgumentsException;
 
-  float asFloat(int index) throws ArgumentsException;
+    float asFloat(int index) throws ArgumentsException;
 
-  double asDouble(int index) throws ArgumentsException;
+    double asDouble(int index) throws ArgumentsException;
 }

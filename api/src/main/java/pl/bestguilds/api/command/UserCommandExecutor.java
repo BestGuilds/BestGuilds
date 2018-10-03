@@ -6,9 +6,9 @@ import pl.bestguilds.api.user.User;
 
 public abstract class UserCommandExecutor implements CommandExecutor<User> {
 
-  protected final BestGuildsAPI plugin;
+    protected final BestGuildsAPI plugin;
 
-  public UserCommandExecutor(@NotNull BestGuildsAPI plugin) {
-    this.plugin = plugin;
-  }
+    public UserCommandExecutor(@NotNull BestGuildsAPI plugin) {
+        this.plugin = plugin;
+    }
 }

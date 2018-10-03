@@ -2,11 +2,11 @@ package pl.bestguilds.api.command;
 
 public interface Command {
 
-  String getName();
+    String getName();
 
-  String[] getAliases();
+    String[] getAliases();
 
-  CommandExecutor getExecutor();
+    CommandExecutor getExecutor();
 
-  boolean contains(String name);
+    boolean contains(String name);
 }

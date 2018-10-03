@@ -5,11 +5,11 @@ import org.jetbrains.annotations.NotNull;
 
 public final class ChatColorUtil {
 
-  private ChatColorUtil() {
-  }
+    private ChatColorUtil() {
+    }
 
-  @NotNull
-  public static String colored(@NotNull String content) {
-    return ChatColor.translateAlternateColorCodes('&', content);
-  }
+    @NotNull
+    public static String colored(@NotNull String content) {
+        return ChatColor.translateAlternateColorCodes('&', content);
+    }
 }

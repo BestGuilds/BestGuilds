@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SubCommand {
 
-  String value();
+    String value();
 
-  String[] aliases() default {};
+    String[] aliases() default {};
 }

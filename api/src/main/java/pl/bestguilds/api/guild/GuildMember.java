@@ -4,7 +4,7 @@ import pl.bestguilds.api.user.User;
 
 public interface GuildMember {
 
-  Guild getGuild();
+    Guild getGuild();
 
-  User getUser();
+    User getUser();
 }

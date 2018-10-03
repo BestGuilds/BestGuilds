@@ -9,12 +9,12 @@ import pl.bestguilds.api.user.User;
 
 public class GuildCommand extends UserCommandExecutor {
 
-  public GuildCommand(@NotNull BestGuildsAPI plugin) {
-    super(plugin);
-  }
+    public GuildCommand(@NotNull BestGuildsAPI plugin) {
+        super(plugin);
+    }
 
-  @Override
-  public void execute(User sender, Arguments args) throws CommandException {
-    sender.sendMessage("=)");
-  }
+    @Override
+    public void execute(User sender, Arguments args) throws CommandException {
+        sender.sendMessage("=)");
+    }
 }

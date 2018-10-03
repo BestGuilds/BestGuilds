@@ -10,13 +10,13 @@ import pl.bestguilds.api.user.User;
 
 public class CreateGuildCommand extends UserCommandExecutor {
 
-  public CreateGuildCommand(@NotNull BestGuildsAPI plugin) {
-    super(plugin);
-  }
+    public CreateGuildCommand(@NotNull BestGuildsAPI plugin) {
+        super(plugin);
+    }
 
-  @SubCommand("create")
-  @Override
-  public void execute(User sender, Arguments args) throws CommandException {
-    sender.sendMessage("=)");
-  }
+    @SubCommand("create")
+    @Override
+    public void execute(User sender, Arguments args) throws CommandException {
+        sender.sendMessage("=)");
+    }
 }

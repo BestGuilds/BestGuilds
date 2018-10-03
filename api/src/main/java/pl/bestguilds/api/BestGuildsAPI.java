@@ -7,12 +7,12 @@ import pl.bestguilds.api.user.UserManager;
 
 public interface BestGuildsAPI {
 
-  @NotNull
-  UserManager getUserManager();
+    @NotNull
+    UserManager getUserManager();
 
-  @NotNull
-  GuildManager getGuildManager();
+    @NotNull
+    GuildManager getGuildManager();
 
-  @NotNull
-  CommandManager getCommandManager();
+    @NotNull
+    CommandManager getCommandManager();
 }

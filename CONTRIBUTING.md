@@ -1,2 +1,2 @@
 ## Code style
-Can get here: [**click**](https://github.com/BestGuilds/BestStyle)
+Oracle Code Style

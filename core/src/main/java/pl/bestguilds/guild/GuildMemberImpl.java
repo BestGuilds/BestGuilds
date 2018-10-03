@@ -10,50 +10,50 @@ import java.util.Objects;
 
 public class GuildMemberImpl implements GuildMember {
 
-  private final Guild guild;
-  private final User  user;
+    private final Guild guild;
+    private final User user;
 
-  GuildMemberImpl(@NotNull Guild guild, @NotNull User user) {
-    this.guild = guild;
-    this.user = user;
-  }
-
-  @Override
-  public Guild getGuild() {
-    return guild;
-  }
-
-  @Override
-  public User getUser() {
-    return user;
-  }
-
-  //TODO guild hierarchy
-
-  @Override
-  public boolean equals(Object object) {
-    if (this == object) {
-      return true;
+    GuildMemberImpl(@NotNull Guild guild, @NotNull User user) {
+        this.guild = guild;
+        this.user = user;
     }
 
-    if (!(object instanceof GuildMemberImpl)) {
-      return false;
+    @Override
+    public Guild getGuild() {
+        return guild;
     }
 
-    GuildMemberImpl that = (GuildMemberImpl) object;
-    return this.user.equals(that.user);
-  }
+    @Override
+    public User getUser() {
+        return user;
+    }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(guild, user);
-  }
+    //TODO guild hierarchy
 
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-        .add("guild", guild)
-        .add("user", user)
-        .toString();
-  }
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        if (!(object instanceof GuildMemberImpl)) {
+            return false;
+        }
+
+        GuildMemberImpl that = (GuildMemberImpl) object;
+        return this.user.equals(that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(guild, user);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("guild", guild)
+                .add("user", user)
+                .toString();
+    }
 }

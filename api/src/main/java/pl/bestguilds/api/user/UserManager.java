@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public interface UserManager {
 
-  Optional<User> getUser(@NotNull UUID uuid);
+    Optional<User> getUser(@NotNull UUID uuid);
 
-  Optional<User> getUser(@NotNull String name);
+    Optional<User> getUser(@NotNull String name);
 
-  ImmutableSet<User> getUsers();
+    ImmutableSet<User> getUsers();
 }
