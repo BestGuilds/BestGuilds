@@ -10,9 +10,6 @@ import pl.bestguilds.api.user.UserManager;
 public interface BestGuildsAPI {
 
   @NotNull
-  Storage getStorage();
-
-  @NotNull
   File getDataFolder();
 
   @NotNull

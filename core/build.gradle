@@ -1,6 +1,19 @@
+repositories {
+    maven {
+        name 'papermc'
+        url 'https://papermc.io/repo/repository/maven-public/'
+    }
+
+    maven {
+        name 'sonatype'
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
 dependencies {
     compile project(':api')
     compile group: 'com.zaxxer', name: 'HikariCP', version: '3.2.0'
     compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.8.2'
     compile group: 'org.mongodb', name: 'mongodb-driver-async', version: '3.8.2'
+    compile 'com.destroystokyo.paper:paper-api:1.13.1-R0.1-SNAPSHOT'
 }

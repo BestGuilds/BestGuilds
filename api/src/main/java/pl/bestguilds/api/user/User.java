@@ -21,15 +21,6 @@ public interface User extends BestCommandSender, Statistics {
 
   void sendMessage(@NotNull String content);
 
-  enum UpdateType {
-    KILL,
-    DEATH,
-    ASSIST,
-    JOIN,
-    QUIT,
-    ;
-  }
-
   interface Builder extends pl.bestguilds.api.util.Builder<User> {
 
     Builder uuid(@NotNull UUID uuid);

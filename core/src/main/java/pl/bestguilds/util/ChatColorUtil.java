@@ -1,4 +1,4 @@
-package pl.bestguilds.bukkit.util;
+package pl.bestguilds.util;
 
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;

@@ -1,5 +1,6 @@
 package pl.bestguilds.user;
 
+import java.util.Objects;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -8,7 +9,7 @@ import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.api.user.User.Builder;
 
-public abstract class BestUserBuilder implements User.Builder {
+public class BestUserBuilder implements User.Builder {
 
   @Nullable
   protected UUID        uuid;
@@ -44,5 +45,20 @@ public abstract class BestUserBuilder implements User.Builder {
   public Builder guildMember(@NotNull GuildMember guildMember) {
     this.guildMember = guildMember;
     return this;
+  }
+
+  @Override
+  public final User build() {
+    Objects.requireNonNull(uuid);
+    Objects.requireNonNull(name);
+    Objects.requireNonNull(statistics);
+
+    User user = new BestUser(uuid, name, statistics);
+
+    if (guildMember != null) {
+      user.setGuildMember(guildMember);
+    }
+
+    return user;
   }
 }

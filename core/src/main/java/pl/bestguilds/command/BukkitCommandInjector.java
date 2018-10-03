@@ -1,4 +1,4 @@
-package pl.bestguilds.bukkit.command;
+package pl.bestguilds.command;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
