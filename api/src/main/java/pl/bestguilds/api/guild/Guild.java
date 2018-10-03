@@ -1,41 +1,42 @@
 package pl.bestguilds.api.guild;
 
 import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 
+import java.util.Set;
+import java.util.UUID;
+
 public interface Guild {
 
-  UUID getUUID();
+    UUID getUUID();
 
-  String getTag();
+    String getTag();
 
-  String getName();
+    String getName();
 
-  ImmutableSet<GuildMember> getMembers();
+    ImmutableSet<GuildMember> getMembers();
 
-  void addMember(@NotNull GuildMember guildMember);
+    void addMember(@NotNull GuildMember guildMember);
 
-  void addMember(@NotNull User user);
+    void addMember(@NotNull User user);
 
-  boolean isMember(@NotNull User user);
+    boolean isMember(@NotNull User user);
 
-  ImmutableSet<Guild> getAllies();
+    ImmutableSet<Guild> getAllies();
 
-  void addAlly(@NotNull Guild guild);
+    void addAlly(@NotNull Guild guild);
 
-  boolean isAlly(@NotNull Guild guild);
+    boolean isAlly(@NotNull Guild guild);
 
-  interface Builder extends pl.bestguilds.api.util.Builder<Guild> {
+    interface Builder extends pl.bestguilds.api.util.Builder<Guild> {
 
-    Builder tag(@NotNull String tag);
+        Builder tag(@NotNull String tag);
 
-    Builder name(@NotNull String name);
+        Builder name(@NotNull String name);
 
-    Builder members(@NotNull Set<GuildMember> members);
+        Builder members(@NotNull Set<GuildMember> members);
 
-    Builder allies(@NotNull Set<Guild> allies);
-  }
+        Builder allies(@NotNull Set<Guild> allies);
+    }
 }

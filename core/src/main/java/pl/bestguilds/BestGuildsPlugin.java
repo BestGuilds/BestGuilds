@@ -16,41 +16,41 @@ import pl.bestguilds.user.UserManagerImpl;
 
 public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI {
 
-  private final UserManager    userManager;
-  private final GuildManager   guildManager;
-  private final CommandManager commandManager;
+    private final UserManager userManager;
+    private final GuildManager guildManager;
+    private final CommandManager commandManager;
 
-  public BestGuildsPlugin() {
-    this.userManager = new UserManagerImpl();
-    this.guildManager = new GuildManagerImpl();
-    this.commandManager = new CommandManagerImpl();
+    public BestGuildsPlugin() {
+        this.userManager = new UserManagerImpl();
+        this.guildManager = new GuildManagerImpl();
+        this.commandManager = new CommandManagerImpl();
 
-    CommandInjector commandInjector = new BukkitCommandInjector(this);
-    registerCommands(commandInjector);
+        CommandInjector commandInjector = new BukkitCommandInjector(this);
+        registerCommands(commandInjector);
 
-    BestGuilds.setInstance(this);
-  }
+        BestGuilds.setInstance(this);
+    }
 
-  private void registerCommands(@NotNull CommandInjector injector) {
-    this.commandManager.setMainCommand(new GuildCommand(this));
-    this.commandManager.register(
-        new CreateGuildCommand(this)
-    );
-    injector.inject();
-  }
+    private void registerCommands(@NotNull CommandInjector injector) {
+        this.commandManager.setMainCommand(new GuildCommand(this));
+        this.commandManager.register(
+                new CreateGuildCommand(this)
+        );
+        injector.inject();
+    }
 
-  @Override
-  public @NotNull UserManager getUserManager() {
-    return userManager;
-  }
+    @Override
+    public @NotNull UserManager getUserManager() {
+        return userManager;
+    }
 
-  @Override
-  public @NotNull GuildManager getGuildManager() {
-    return guildManager;
-  }
+    @Override
+    public @NotNull GuildManager getGuildManager() {
+        return guildManager;
+    }
 
-  @Override
-  public @NotNull CommandManager getCommandManager() {
-    return commandManager;
-  }
+    @Override
+    public @NotNull CommandManager getCommandManager() {
+        return commandManager;
+    }
 }

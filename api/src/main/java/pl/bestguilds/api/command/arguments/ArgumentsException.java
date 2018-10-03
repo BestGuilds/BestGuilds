@@ -4,11 +4,11 @@ import pl.bestguilds.api.command.CommandException;
 
 public final class ArgumentsException extends CommandException {
 
-  public ArgumentsException() {
-    super();
-  }
+    public ArgumentsException() {
+        super();
+    }
 
-  ArgumentsException(String message) {
-    super(message);
-  }
+    ArgumentsException(String message) {
+        super(message);
+    }
 }

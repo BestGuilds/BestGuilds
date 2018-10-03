@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface GuildManager {
 
-  Optional<Guild> getGuildByTag(@NotNull String tag);
+    Optional<Guild> getGuildByTag(@NotNull String tag);
 
-  Optional<Guild> getGuildByName(@NotNull String name);
+    Optional<Guild> getGuildByName(@NotNull String name);
 
-  ImmutableSet<Guild> getGuilds();
+    ImmutableSet<Guild> getGuilds();
 }

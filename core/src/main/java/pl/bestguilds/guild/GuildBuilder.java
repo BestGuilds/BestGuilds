@@ -12,46 +12,46 @@ import java.util.Set;
 
 public class GuildBuilder implements Guild.Builder {
 
-  private @Nullable String           tag;
-  private @Nullable String           name;
-  private           Set<GuildMember> members;
-  private           Set<Guild>       allies;
+    private @Nullable String tag;
+    private @Nullable String name;
+    private Set<GuildMember> members;
+    private Set<Guild> allies;
 
-  GuildBuilder() {
-    this.members = new HashSet<>(1);
-    this.allies = new HashSet<>(0);
-  }
+    GuildBuilder() {
+        this.members = new HashSet<>(1);
+        this.allies = new HashSet<>(0);
+    }
 
-  @Override
-  public Builder tag(@NotNull String tag) {
-    this.tag = tag;
-    return this;
-  }
+    @Override
+    public Builder tag(@NotNull String tag) {
+        this.tag = tag;
+        return this;
+    }
 
-  @Override
-  public Builder name(@NotNull String name) {
-    this.name = name;
-    return this;
-  }
+    @Override
+    public Builder name(@NotNull String name) {
+        this.name = name;
+        return this;
+    }
 
-  @Override
-  public Builder members(@NotNull Set<GuildMember> members) {
-    this.members = members;
-    return this;
-  }
+    @Override
+    public Builder members(@NotNull Set<GuildMember> members) {
+        this.members = members;
+        return this;
+    }
 
-  @Override
-  public Builder allies(@NotNull Set<Guild> allies) {
-    this.allies = allies;
-    return this;
-  }
+    @Override
+    public Builder allies(@NotNull Set<Guild> allies) {
+        this.allies = allies;
+        return this;
+    }
 
-  @NotNull
-  @Override
-  public Guild build() {
-    Objects.requireNonNull(tag);
-    Objects.requireNonNull(name);
+    @NotNull
+    @Override
+    public Guild build() {
+        Objects.requireNonNull(tag);
+        Objects.requireNonNull(name);
 
-    return new GuildImpl(tag, name, members, allies);
-  }
+        return new GuildImpl(tag, name, members, allies);
+    }
 }

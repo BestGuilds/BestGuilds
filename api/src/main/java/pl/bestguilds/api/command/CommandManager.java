@@ -8,17 +8,17 @@ import java.util.Optional;
 
 public interface CommandManager {
 
-  void register(@NotNull CommandExecutor<?> executor);
+    void register(@NotNull CommandExecutor<?> executor);
 
-  default void register(CommandExecutor<?>... executors) {
-    Arrays.stream(executors).forEach(this::register);
-  }
+    default void register(CommandExecutor<?>... executors) {
+        Arrays.stream(executors).forEach(this::register);
+    }
 
-  Command getMainCommand();
+    Command getMainCommand();
 
-  void setMainCommand(CommandExecutor<?> executor);
+    void setMainCommand(CommandExecutor<?> executor);
 
-  Optional<Command> getCommand(String name);
+    Optional<Command> getCommand(String name);
 
-  ImmutableSet<Command> getSubCommands();
+    ImmutableSet<Command> getSubCommands();
 }
