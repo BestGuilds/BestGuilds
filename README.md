@@ -1,5 +1,5 @@
 # BestGuilds
-[![][travis img]][travis] [![][license img]][license] [![][discord img]][discord]
+[![][travis img]][travis] [![][codacy img]][codacy] [![][license img]][license] [![][discord img]][discord]
 
 ## About
 BestGuilds is fully customizable RPG plugin that allows you to create your own guilds and manage them. Our plugin has a lot of features.
@@ -21,6 +21,9 @@ if have you idea or bug, please write [here](https://github.com/BestGuilds/BestG
 
 [travis]: https://travis-ci.org/BestGuilds/BestGuilds
 [travis img]: https://travis-ci.org/BestGuilds/BestGuilds.svg?branch=master
+
+[codacy]:https://www.codacy.com/app/crejk/BestGuilds?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BestGuilds/BestGuilds&amp;utm_campaign=Badge_Grade
+[codacy img]:https://api.codacy.com/project/badge/Grade/0b7a1f2929f94779a89ec6d0c685b8cf
 
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/license-GNU%203-gold.svg
