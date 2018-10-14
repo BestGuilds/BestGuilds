@@ -46,14 +46,14 @@ public class GuildMemberImpl implements GuildMember {
 
     @Override
     public int hashCode() {
-        return Objects.hash(guild, user);
+        return Objects.hash(this.guild, this.user);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("guild", guild)
-                .add("user", user)
+                .add("guild", this.guild)
+                .add("user", this.user)
                 .toString();
     }
 }

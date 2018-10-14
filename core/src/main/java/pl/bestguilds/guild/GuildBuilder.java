@@ -12,10 +12,8 @@ import java.util.Set;
 
 public class GuildBuilder implements Guild.Builder {
 
-    @Nullable
-    private String tag;
-    @Nullable
-    private String name;
+    private @Nullable String tag;
+    private @Nullable String name;
     private Set<GuildMember> members;
     private Set<Guild> allies;
 
@@ -51,9 +49,9 @@ public class GuildBuilder implements Guild.Builder {
     @NotNull
     @Override
     public Guild build() {
-        Objects.requireNonNull(tag);
-        Objects.requireNonNull(name);
+        Objects.requireNonNull(this.tag);
+        Objects.requireNonNull(this.name);
 
-        return new GuildImpl(tag, name, members, allies);
+        return new GuildImpl(this.tag, this.name, this.members, this.allies);
     }
 }

@@ -12,14 +12,10 @@ import java.util.UUID;
 
 public class UserBuilder implements User.Builder {
 
-    @Nullable
-    private UUID uuid;
-    @Nullable
-    private String name;
-    @Nullable
-    private Statistics statistics;
-    @Nullable
-    private GuildMember guildMember;
+    private @Nullable UUID uuid;
+    private @Nullable String name;
+    private @Nullable Statistics statistics;
+    private @Nullable GuildMember guildMember;
 
     UserBuilder() {
     }
@@ -49,15 +45,15 @@ public class UserBuilder implements User.Builder {
     }
 
     @Override
-    public final User build() {
-        Objects.requireNonNull(uuid);
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(statistics);
+    public User build() {
+        Objects.requireNonNull(this.uuid);
+        Objects.requireNonNull(this.name);
+        Objects.requireNonNull(this.statistics);
 
-        User user = new UserImpl(uuid, name, statistics);
+        User user = new UserImpl(this.uuid, this.name, this.statistics);
 
-        if (guildMember != null) {
-            user.setGuildMember(guildMember);
+        if (this.guildMember != null) {
+            user.setGuildMember(this.guildMember);
         }
 
         return user;

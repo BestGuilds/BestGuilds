@@ -15,7 +15,7 @@ public class UserManagerImpl implements UserManager {
     private final IdentifyMap<User> userMap;
 
     public UserManagerImpl() {
-        userMap = new IdentifyHashMap<>();
+        this.userMap = new IdentifyHashMap<>();
     }
 
     @Override

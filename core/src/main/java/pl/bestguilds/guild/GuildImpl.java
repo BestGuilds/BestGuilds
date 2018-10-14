@@ -107,11 +107,11 @@ public class GuildImpl implements Guild {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("uuid", uuid)
-                .add("tag", tag)
-                .add("name", name)
-                .add("members", members)
-                .add("allies", allies)
+                .add("uuid", this.uuid)
+                .add("tag", this.tag)
+                .add("name", this.name)
+                .add("members", this.members)
+                .add("allies", this.allies)
                 .toString();
     }
 }

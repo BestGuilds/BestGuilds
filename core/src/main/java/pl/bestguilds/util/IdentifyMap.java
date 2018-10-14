@@ -13,30 +13,30 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public interface IdentifyMap<T> extends ConcurrentMap<UUID, T> {
+public interface IdentifyMap<V> extends ConcurrentMap<UUID, V> {
 
-    default Optional<T> getSafe(Object key) {
+    default Optional<V> getSafe(Object key) {
         return Optional.ofNullable(get(key));
     }
 
     @Nullable
-    default T find(Predicate<T> filter) {
+    default V find(Predicate<V> filter) {
         return Iterables.find(values(), filter);
     }
 
-    default Optional<T> findSafe(Predicate<T> filter) {
+    default Optional<V> findSafe(Predicate<V> filter) {
         return Iterables.findSafe(values(), filter);
     }
 
-    default ImmutableList<T> sort(Comparator<T> comparator) {
-        List<T> list = values().stream()
+    default ImmutableList<V> sort(Comparator<V> comparator) {
+        List<V> list = values().stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
 
         return ImmutableList.copyOf(list);
     }
 
-    class IdentifyHashMap<T> extends ConcurrentHashMap<UUID, T> implements IdentifyMap<T> {
+    class IdentifyHashMap<V> extends ConcurrentHashMap<UUID, V> implements IdentifyMap<V> {
 
         private static final long serialVersionUID = 1;
     }
