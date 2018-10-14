@@ -16,11 +16,12 @@ import pl.bestguilds.user.UserManagerImpl;
 
 public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI {
 
-    private final UserManager userManager;
-    private final GuildManager guildManager;
-    private final CommandManager commandManager;
+    private UserManager userManager;
+    private GuildManager guildManager;
+    private CommandManager commandManager;
 
-    public BestGuildsPlugin() {
+    @Override
+    public void onEnable() {
         this.userManager = new UserManagerImpl();
         this.guildManager = new GuildManagerImpl();
         this.commandManager = new CommandManagerImpl();
