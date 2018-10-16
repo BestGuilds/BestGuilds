@@ -1,16 +1,16 @@
 package pl.bestguilds.api.user;
 
-import com.google.common.collect.ImmutableSet;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.api.manager.Manager;
 
 import java.util.Optional;
-import java.util.UUID;
 
-public interface UserManager {
+public interface UserManager extends Manager<User> {
 
-    Optional<User> getUser(@NotNull UUID uuid);
+    User getUser(@NotNull Player player);
 
-    Optional<User> getUser(@NotNull String name);
-
-    ImmutableSet<User> getUsers();
+    default Optional<User> getUser(@NotNull String name) {
+        return findSafe(guild -> guild.getName().equalsIgnoreCase(name));
+    }
 }

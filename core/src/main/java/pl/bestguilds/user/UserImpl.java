@@ -1,6 +1,7 @@
 package pl.bestguilds.user;
 
 import com.google.common.base.MoreObjects;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
@@ -68,11 +69,6 @@ public class UserImpl extends BaseStatistics implements User {
     }
 
     @Override
-    public void sendMessage(@NotNull String content) {
-        getPlayer().ifPresent(player -> player.sendMessage(ChatColorUtil.colored(content)));
-    }
-
-    @Override
     public Optional<Player> getPlayer() {
         Optional<Player> player = Optional.ofNullable(playerReference.get());
 
@@ -114,7 +110,7 @@ public class UserImpl extends BaseStatistics implements User {
                 .add("uuid", uuid)
                 .add("name", name)
                 .add("statistics", statistics)
-                .add("guild", guildMember)
+                .add("guildMember", guildMember)
                 .toString();
     }
 }
