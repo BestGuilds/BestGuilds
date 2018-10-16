@@ -7,7 +7,7 @@ For example:
 - It's very stable.
 - It supports many databases (SQL and NoSQL)
 - Our support is very friendly.
-- Api is easy to use and understand.
+- API is easy to use and understand.
 - Project is open-source and it's developed by experienced programmers.
 
 ## Download
