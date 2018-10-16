@@ -54,7 +54,7 @@ public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI 
     }
 
     private void registerListenersHelper(Listener... listeners) {
-        Arrays.stream(listeners).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
+        Arrays.stream(listeners).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
     }
 
     @Override

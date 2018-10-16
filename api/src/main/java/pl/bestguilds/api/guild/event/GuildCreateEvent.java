@@ -2,9 +2,9 @@ package pl.bestguilds.api.guild.event;
 
 import pl.bestguilds.api.guild.Guild;
 
-public class GuildCreatedEvent extends GuildEvent {
+public class GuildCreateEvent extends GuildEvent {
 
-    public GuildCreatedEvent(Guild guild) {
+    public GuildCreateEvent(Guild guild) {
         super(guild);
     }
 }
