@@ -48,10 +48,9 @@ public final class BukkitCommandInjector implements CommandInjector {
             public boolean execute(CommandSender bukkitSender, String x, String[] bukkitArgs) {
                 BestCommandSender commandSender = defaultSender;
 
-                Optional<User> user = plugin.getUserManager().getUser(((Player) bukkitSender).getUniqueId());
-
-                if (user.isPresent()) {
-                    commandSender = user.get();
+                try {
+                    commandSender = plugin.getUserManager().getUser(((Player) bukkitSender));
+                } catch (ClassCastException ignored) {
                 }
 
                 if (bukkitArgs.length < 1) {
