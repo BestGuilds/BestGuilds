@@ -34,11 +34,11 @@ public interface Statistics {
                     case POINTS:
                         return Float.compare(stats2.getPoints(), stats1.getPoints());
                     case KILLS:
-                        return (stats2.getKills() - stats1.getKills());
+                        return stats2.getKills() - stats1.getKills();
                     case DEATHS:
-                        return (stats2.getDeaths() - stats1.getDeaths());
+                        return stats2.getDeaths() - stats1.getDeaths();
                     case ASSISTS:
-                        return (stats2.getAssists() - stats1.getAssists());
+                        return stats2.getAssists() - stats1.getAssists();
                 }
                 return 0;
             };
