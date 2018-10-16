@@ -1,9 +1,8 @@
 package pl.bestguilds.api.command.arguments;
 
-import com.google.common.collect.ImmutableList;
+import io.vavr.collection.List;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.function.Function;
 
 final class ArgumentsImpl implements Arguments {
@@ -20,8 +19,8 @@ final class ArgumentsImpl implements Arguments {
     }
 
     @Override
-    public ImmutableList<String> get() {
-        return ImmutableList.copyOf(args);
+    public List<String> get() {
+        return this.args;
     }
 
     @Override

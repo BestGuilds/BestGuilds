@@ -1,10 +1,10 @@
 package pl.bestguilds.api.command;
 
-import com.google.common.collect.ImmutableSet;
+import io.vavr.collection.Set;
+import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public interface CommandManager {
 
@@ -18,7 +18,7 @@ public interface CommandManager {
 
     void setMainCommand(CommandExecutor<?> executor);
 
-    Optional<Command> getCommand(String name);
+    Option<Command> getCommand(String name);
 
-    ImmutableSet<Command> getSubCommands();
+    Set<Command> getSubCommands();
 }

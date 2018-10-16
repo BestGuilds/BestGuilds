@@ -15,6 +15,6 @@ public class UserManagerImpl extends BaseManager<User> implements UserManager {
 
     @Override
     public User getUser(@NotNull Player player) {
-        return getValue(player.getUniqueId()).orElse(new UserImpl(player));
+        return getValue(player.getUniqueId()).getOrElse(new UserImpl(player));
     }
 }

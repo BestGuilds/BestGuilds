@@ -28,5 +28,7 @@ subprojects {
         compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.8.2'
         compile group: 'org.mongodb', name: 'mongodb-driver-async', version: '3.8.2'
         compile 'com.destroystokyo.paper:paper-api:1.13.1-R0.1-SNAPSHOT'
+        compile group: 'io.vavr', name: 'vavr', version: '0.9.2'
+
     }
 }

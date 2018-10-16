@@ -25,7 +25,7 @@ public class PlayerQuitListener implements Listener {
         final User user = this.plugin.getUserManager().getUser(player);
 
         final UserImpl userImpl = (UserImpl) user;
-        userImpl.setPlayer(null);
+        userImpl.clearPlayerReference();
 
         Bukkit.getPluginManager().callEvent(new UserQuitEvent(user));
     }

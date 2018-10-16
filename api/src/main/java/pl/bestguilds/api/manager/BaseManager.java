@@ -1,10 +1,11 @@
 package pl.bestguilds.api.manager;
 
-import com.google.common.collect.ImmutableSet;
+import io.vavr.collection.HashSet;
+import io.vavr.collection.Set;
+import io.vavr.control.Option;
 import pl.bestguilds.api.BestGuildsAPI;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,12 +20,12 @@ public abstract class BaseManager<T> implements Manager<T> {
     }
 
     @Override
-    public Optional<T> getValue(UUID uuid) {
-        return Optional.ofNullable(this.map.get(uuid));
+    public Option<T> getValue(UUID uuid) {
+        return Option.of(this.map.get(uuid));
     }
 
     @Override
-    public ImmutableSet<T> getValues() {
-        return ImmutableSet.copyOf(this.map.values());
+    public Set<T> getValues() {
+        return HashSet.ofAll(this.map.values());
     }
 }

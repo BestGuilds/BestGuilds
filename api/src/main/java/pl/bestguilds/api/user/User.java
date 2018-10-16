@@ -1,14 +1,13 @@
 package pl.bestguilds.api.user;
 
+import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.command.BestCommandSender;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.statistics.Statistics;
 
-import java.util.Optional;
 import java.util.UUID;
 
-public interface User extends BestCommandSender, BukkitUser, Statistics {
+public interface User extends BukkitUser, Statistics {
 
     UUID getUUID();
 
@@ -16,7 +15,7 @@ public interface User extends BestCommandSender, BukkitUser, Statistics {
 
     Statistics getStatistics();
 
-    Optional<GuildMember> getGuildMember();
+    Option<GuildMember> getGuildMember();
 
     void setGuildMember(@NotNull GuildMember guild);
 

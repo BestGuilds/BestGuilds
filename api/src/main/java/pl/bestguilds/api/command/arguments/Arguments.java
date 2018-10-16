@@ -1,16 +1,15 @@
 package pl.bestguilds.api.command.arguments;
 
-import com.google.common.collect.ImmutableList;
+import io.vavr.collection.List;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Function;
 
 public interface Arguments {
 
     static Arguments of(String[] args) {
-        return of(Arrays.asList(args));
+        final List<String> list = List.of(args);
+        return new ArgumentsImpl(list);
     }
 
     static Arguments of(List<String> args) {
@@ -19,7 +18,7 @@ public interface Arguments {
 
     int getSize();
 
-    ImmutableList<String> get();
+    List<String> get();
 
     String get(int index) throws ArgumentsException;
 

@@ -1,11 +1,9 @@
 package pl.bestguilds.api.guild;
 
-import com.google.common.collect.ImmutableSet;
-import org.bukkit.Location;
+import io.vavr.collection.Set;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 
-import java.util.Set;
 import java.util.UUID;
 
 public interface Guild {
@@ -18,7 +16,7 @@ public interface Guild {
 
     GuildArea getArea();
 
-    ImmutableSet<GuildMember> getMembers();
+    Set<GuildMember> getMembers();
 
     void addMember(@NotNull GuildMember guildMember);
 
@@ -26,7 +24,7 @@ public interface Guild {
 
     boolean isMember(@NotNull User user);
 
-    ImmutableSet<Guild> getAllies();
+    Set<Guild> getAllies();
 
     void addAlly(@NotNull Guild guild);
 

@@ -2,11 +2,11 @@ package pl.bestguilds.api.command;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.google.common.collect.ImmutableSet;
+import io.vavr.collection.HashSet;
+import io.vavr.collection.Set;
+import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.util.Iterables;
-
-import java.util.Optional;
 
 public final class CommandManagerImpl implements CommandManager {
 
@@ -28,7 +28,7 @@ public final class CommandManagerImpl implements CommandManager {
         SubCommand subCommand = type.getAnnotation(SubCommand.class);
         Command command = new CommandImpl(subCommand.value(), subCommand.aliases(), executor);
 
-        subCommands.put(command, command.getName());
+        this.subCommands.put(command, command.getName());
     }
 
     @Override
@@ -38,16 +38,16 @@ public final class CommandManagerImpl implements CommandManager {
 
     @Override
     public void setMainCommand(CommandExecutor<?> executor) {
-        mainCommand = new CommandImpl("bestguilds", new String[]{"guilds", "g"}, executor);
+        this.mainCommand = new CommandImpl("bestguilds", new String[]{"guilds", "g"}, executor);
     }
 
     @Override
-    public Optional<Command> getCommand(String name) {
+    public Option<Command> getCommand(String name) {
         return Iterables.findSafe(getSubCommands(), command -> command.contains(name));
     }
 
     @Override
-    public ImmutableSet<Command> getSubCommands() {
-        return ImmutableSet.copyOf(subCommands.keySet());
+    public Set<Command> getSubCommands() {
+        return HashSet.ofAll(this.subCommands.inverse().values());
     }
 }

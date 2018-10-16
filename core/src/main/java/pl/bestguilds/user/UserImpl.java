@@ -1,7 +1,7 @@
 package pl.bestguilds.user;
 
 import com.google.common.base.MoreObjects;
-import net.md_5.bungee.api.chat.TextComponent;
+import io.vavr.control.Option;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Contract;
@@ -10,12 +10,10 @@ import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.statistics.Statistics;
 import pl.bestguilds.api.user.User;
 import pl.bestguilds.statistics.BaseStatistics;
-import pl.bestguilds.util.ChatColorUtil;
 
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 
 public class UserImpl extends BaseStatistics implements User {
@@ -59,8 +57,8 @@ public class UserImpl extends BaseStatistics implements User {
     }
 
     @Override
-    public Optional<GuildMember> getGuildMember() {
-        return Optional.ofNullable(guildMember);
+    public Option<GuildMember> getGuildMember() {
+        return Option.of(guildMember);
     }
 
     @Override
@@ -69,16 +67,13 @@ public class UserImpl extends BaseStatistics implements User {
     }
 
     @Override
-    public Optional<Player> getPlayer() {
-        Optional<Player> player = Optional.ofNullable(playerReference.get());
+    public Option<Player> getPlayer() {
+        return Option.of(playerReference.get())
+                .orElse(Option.of(Bukkit.getPlayer(uuid)));
+    }
 
-        if (!player.isPresent() || !player.get().isOnline()) {
-            player = Optional.ofNullable(Bukkit.getPlayer(this.uuid));
-            player.ifPresent(this::setPlayer);
-            return player;
-        }
-
-        return player;
+    public void clearPlayerReference() {
+        this.playerReference.clear();
     }
 
     public void setPlayer(Player player) {

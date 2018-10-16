@@ -1,26 +1,16 @@
 package pl.bestguilds.api.util;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import io.vavr.collection.Stream;
+import io.vavr.control.Option;
 
-import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.StreamSupport;
 
 public final class Iterables {
 
     private Iterables() {
     }
 
-    @Nullable
-    public static <T> T find(@NotNull Iterable<T> iterable, Predicate<? super T> predicate) {
-        return StreamSupport.stream(iterable.spliterator(), false)
-                .filter(predicate)
-                .findFirst()
-                .orElse(null);
-    }
-
-    public static <T> Optional<T> findSafe(Iterable<T> iterable, Predicate<T> filter) {
-        return Optional.ofNullable(find(iterable, filter));
+    public static <T> Option<T> findSafe(Iterable<T> iterable, Predicate<T> filter) {
+        return Stream.ofAll(iterable).find(filter);
     }
 }
