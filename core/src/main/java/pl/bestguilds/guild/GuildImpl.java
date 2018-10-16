@@ -3,9 +3,11 @@ package pl.bestguilds.guild;
 import com.google.common.base.Charsets;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableSet;
+import org.bukkit.Location;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
+import pl.bestguilds.api.guild.GuildArea;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 
@@ -18,13 +20,16 @@ public class GuildImpl implements Guild {
     private final UUID uuid;
     private final String tag;
     private final String name;
+    private final GuildArea area;
+
     private final Set<GuildMember> members;
     private final Set<Guild> allies;
 
-    GuildImpl(String tag, String name, Set<GuildMember> members, Set<Guild> allies) {
+    GuildImpl(String tag, String name, GuildArea area, Set<GuildMember> members, Set<Guild> allies) {
         this.uuid = UUID.nameUUIDFromBytes(("guild: " + tag + "-" + name).getBytes(Charsets.UTF_8));
         this.tag = tag;
         this.name = name;
+        this.area = area;
         this.members = members;
         this.allies = allies;
     }
@@ -37,17 +42,22 @@ public class GuildImpl implements Guild {
 
     @Override
     public UUID getUUID() {
-        return uuid;
+        return this.uuid;
     }
 
     @Override
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
+    }
+
+    @Override
+    public GuildArea getArea() {
+        return this.area;
     }
 
     @Override

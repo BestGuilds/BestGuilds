@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.Guild.Builder;
+import pl.bestguilds.api.guild.GuildArea;
 import pl.bestguilds.api.guild.GuildMember;
 
 import java.util.HashSet;
@@ -14,6 +15,7 @@ public class GuildBuilder implements Guild.Builder {
 
     private @Nullable String tag;
     private @Nullable String name;
+    private @Nullable GuildArea area;
     private Set<GuildMember> members;
     private Set<Guild> allies;
 
@@ -35,6 +37,12 @@ public class GuildBuilder implements Guild.Builder {
     }
 
     @Override
+    public Builder guildArea(@NotNull GuildArea area) {
+        this.area = area;
+        return this;
+    }
+
+    @Override
     public Builder members(@NotNull Set<GuildMember> members) {
         this.members = members;
         return this;
@@ -51,7 +59,8 @@ public class GuildBuilder implements Guild.Builder {
     public Guild build() {
         Objects.requireNonNull(this.tag);
         Objects.requireNonNull(this.name);
+        Objects.requireNonNull(this.area);
 
-        return new GuildImpl(this.tag, this.name, this.members, this.allies);
+        return new GuildImpl(this.tag, this.name, this.area, this.members, this.allies);
     }
 }

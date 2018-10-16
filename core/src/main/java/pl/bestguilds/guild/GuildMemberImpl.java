@@ -20,12 +20,12 @@ public class GuildMemberImpl implements GuildMember {
 
     @Override
     public Guild getGuild() {
-        return guild;
+        return this.guild;
     }
 
     @Override
     public User getUser() {
-        return user;
+        return this.user;
     }
 
     //TODO guild hierarchy

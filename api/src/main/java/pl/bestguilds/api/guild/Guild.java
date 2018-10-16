@@ -1,6 +1,7 @@
 package pl.bestguilds.api.guild;
 
 import com.google.common.collect.ImmutableSet;
+import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.user.User;
 
@@ -14,6 +15,8 @@ public interface Guild {
     String getTag();
 
     String getName();
+
+    GuildArea getArea();
 
     ImmutableSet<GuildMember> getMembers();
 
@@ -34,6 +37,8 @@ public interface Guild {
         Builder tag(@NotNull String tag);
 
         Builder name(@NotNull String name);
+
+        Builder guildArea(@NotNull GuildArea area);
 
         Builder members(@NotNull Set<GuildMember> members);
 
