@@ -1,5 +1,7 @@
 package pl.bestguilds;
 
+import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.BestGuildsAPI;
@@ -12,7 +14,11 @@ import pl.bestguilds.api.user.UserManager;
 import pl.bestguilds.command.GuildCommand;
 import pl.bestguilds.command.sub.CreateGuildCommand;
 import pl.bestguilds.guild.GuildManagerImpl;
+import pl.bestguilds.listener.PlayerJoinListener;
+import pl.bestguilds.listener.PlayerQuitListener;
 import pl.bestguilds.user.UserManagerImpl;
+
+import java.util.Arrays;
 
 public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI {
 
@@ -22,8 +28,8 @@ public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI 
 
     @Override
     public void onEnable() {
-        this.userManager = new UserManagerImpl();
-        this.guildManager = new GuildManagerImpl();
+        this.userManager = new UserManagerImpl(this);
+        this.guildManager = new GuildManagerImpl(this);
         this.commandManager = new CommandManagerImpl();
 
         CommandInjector commandInjector = new BukkitCommandInjector(this);
@@ -38,6 +44,17 @@ public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI 
                 new CreateGuildCommand(this)
         );
         injector.inject();
+    }
+
+    private void registerListeners() {
+        registerListenersHelper(
+                new PlayerJoinListener(this),
+                new PlayerQuitListener(this)
+        );
+    }
+
+    private void registerListenersHelper(Listener... listeners) {
+        Arrays.stream(listeners).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
     }
 
     @Override
