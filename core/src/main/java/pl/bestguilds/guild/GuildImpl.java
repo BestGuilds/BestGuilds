@@ -1,10 +1,8 @@
 package pl.bestguilds.guild;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Function;
 import com.google.common.base.MoreObjects;
-import io.vavr.collection.Set;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import io.vavr.collection.HashSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
@@ -13,6 +11,7 @@ import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 public class GuildImpl implements Guild {
@@ -61,8 +60,8 @@ public class GuildImpl implements Guild {
     }
 
     @Override
-    public Set<GuildMember> getMembers() {
-        return this.members;
+    public io.vavr.collection.Set<GuildMember> getMembers() {
+        return HashSet.ofAll(this.members);
     }
 
     @Override
@@ -77,20 +76,17 @@ public class GuildImpl implements Guild {
 
     @Override
     public boolean isMember(@NotNull User user) {
-        return user.getGuildMember()
-                .map(guildMember -> getMembers()
-                        .contains(guildMember))
-                .get();
+        return getMembers().forAll(guildMember -> guildMember.getUser().equals(user));
     }
 
     @Override
-    public Set<Guild> getAllies() {
-        return this.allies;
+    public io.vavr.collection.Set<Guild> getAllies() {
+        return HashSet.ofAll(this.allies);
     }
 
     @Override
     public void addAlly(@NotNull Guild guild) {
-        allies.add(guild);
+        this.allies.add(guild);
     }
 
     @Override

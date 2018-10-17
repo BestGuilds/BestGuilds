@@ -30,7 +30,7 @@ public class UserImpl extends BaseStatistics implements User {
         this.statistics = statistics;
     }
 
-    public UserImpl(@NotNull Player player) {
+    UserImpl(@NotNull Player player) {
         this(player.getUniqueId(), player.getName(), new BaseStatistics());
         this.playerReference = new WeakReference<>(player);
     }
@@ -97,16 +97,16 @@ public class UserImpl extends BaseStatistics implements User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, name, statistics, guildMember);
+        return Objects.hash(this.uuid, this.name, this.statistics, this.guildMember);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("uuid", uuid)
-                .add("name", name)
-                .add("statistics", statistics)
-                .add("guildMember", guildMember)
+                .add("uuid", this.uuid)
+                .add("name", this.name)
+                .add("statistics", this.statistics)
+                .add("guildMember", this.guildMember)
                 .toString();
     }
 }

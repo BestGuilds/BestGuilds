@@ -1,7 +1,6 @@
 package pl.bestguilds.guild;
 
 import com.google.common.base.MoreObjects;
-import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.user.User;
@@ -13,7 +12,7 @@ public class GuildMemberImpl implements GuildMember {
     private final Guild guild;
     private final User user;
 
-    GuildMemberImpl(@NotNull Guild guild, @NotNull User user) {
+    GuildMemberImpl(Guild guild, User user) {
         this.guild = guild;
         this.user = user;
     }

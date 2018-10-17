@@ -1,7 +1,5 @@
 package pl.bestguilds.guild;
 
-import io.vavr.collection.HashSet;
-import io.vavr.collection.Set;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import pl.bestguilds.api.guild.Guild;
@@ -9,7 +7,9 @@ import pl.bestguilds.api.guild.Guild.Builder;
 import pl.bestguilds.api.guild.GuildArea;
 import pl.bestguilds.api.guild.GuildMember;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class GuildBuilder implements Guild.Builder {
 
@@ -20,8 +20,8 @@ public class GuildBuilder implements Guild.Builder {
     private Set<Guild> allies;
 
     GuildBuilder() {
-        this.members = HashSet.empty();
-        this.allies = HashSet.empty();
+        this.members = new HashSet<>(1);
+        this.allies = new HashSet<>(0);
     }
 
     @Override

@@ -57,17 +57,17 @@ public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI 
     }
 
     @Override
-    public @NotNull UserManager getUserManager() {
+    public UserManager getUserManager() {
         return userManager;
     }
 
     @Override
-    public @NotNull GuildManager getGuildManager() {
+    public GuildManager getGuildManager() {
         return guildManager;
     }
 
     @Override
-    public @NotNull CommandManager getCommandManager() {
+    public CommandManager getCommandManager() {
         return commandManager;
     }
 }

@@ -1,7 +1,6 @@
 package pl.bestguilds.api.guild;
 
 import org.bukkit.Location;
-import org.jetbrains.annotations.NotNull;
 
 public interface GuildArea {
 
@@ -15,5 +14,5 @@ public interface GuildArea {
 
     Location getHome();
 
-    void setHome(@NotNull Location location);
+    void setHome(Location location);
 }

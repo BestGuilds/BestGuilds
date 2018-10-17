@@ -38,8 +38,8 @@ public interface Guild {
 
         Builder guildArea(@NotNull GuildArea area);
 
-        Builder members(@NotNull Set<GuildMember> members);
+        Builder members(@NotNull java.util.Set<GuildMember> members);
 
-        Builder allies(@NotNull Set<Guild> allies);
+        Builder allies(@NotNull java.util.Set<Guild> allies);
     }
 }

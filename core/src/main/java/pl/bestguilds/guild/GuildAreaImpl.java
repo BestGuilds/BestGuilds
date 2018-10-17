@@ -1,7 +1,6 @@
 package pl.bestguilds.guild;
 
 import org.bukkit.Location;
-import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.GuildArea;
 
 public class GuildAreaImpl implements GuildArea {
@@ -10,12 +9,12 @@ public class GuildAreaImpl implements GuildArea {
     private int size;
     private Location home;
 
-    public GuildAreaImpl(final Location location) {
+    GuildAreaImpl(final Location location) {
         this.location = location;
         this.home = location;
     }
 
-    public GuildAreaImpl(final Location location, Location home) {
+    GuildAreaImpl(final Location location, Location home) {
         this.location = location;
         this.home = home;
     }
@@ -52,7 +51,7 @@ public class GuildAreaImpl implements GuildArea {
     }
 
     @Override
-    public void setHome(@NotNull Location location) {
+    public void setHome(Location location) {
         this.home = location;
     }
 }
