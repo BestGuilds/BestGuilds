@@ -69,7 +69,8 @@ public class UserImpl extends BaseStatistics implements User {
     @Override
     public Option<Player> getPlayer() {
         return Option.of(playerReference.get())
-                .orElse(Option.of(Bukkit.getPlayer(uuid)));
+                .orElse(() -> Option.of(Bukkit.getPlayer(uuid))
+                        .peek(this::setPlayer));
     }
 
     public void clearPlayerReference() {
