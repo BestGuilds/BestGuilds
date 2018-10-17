@@ -25,6 +25,16 @@ public abstract class BaseManager<T> implements Manager<T> {
     }
 
     @Override
+    public void addValue(UUID uuid, T t) {
+        this.map.put(uuid, t);
+    }
+
+    @Override
+    public void removeValue(UUID uuid) {
+        this.map.remove(uuid);
+    }
+
+    @Override
     public Set<T> getValues() {
         return HashSet.ofAll(this.map.values());
     }
