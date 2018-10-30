@@ -1,34 +1,57 @@
 package pl.bestguilds.api.command.arguments;
 
 import io.vavr.collection.List;
-import org.jetbrains.annotations.NotNull;
+import io.vavr.control.Option;
 
 import java.util.function.Function;
 
 public interface Arguments {
 
-    static Arguments of(String[] args) {
-        final List<String> list = List.of(args);
-        return new ArgumentsImpl(list);
-    }
-
-    static Arguments of(List<String> args) {
+    static Arguments of(final List<String> args) {
         return new ArgumentsImpl(args);
     }
 
-    int getSize();
+    static Arguments of(final java.util.List<String> arguments) {
+        final List<String> args = List.ofAll(arguments);
+        return of(args);
+    }
+
+    static Arguments of(final String[] arguments) {
+        final List<String> args = List.of(arguments);
+        return of(args);
+    }
 
     List<String> get();
 
-    String get(int index) throws ArgumentsException;
+    Option<String> get(int index);
 
-    <T> T get(int index, @NotNull Function<String, T> function) throws ArgumentsException;
+    <T> Option<T> get(int index, Function<String, T> function);
 
-    String asString(int index) throws ArgumentsException;
+    default Option<Integer> asInt(int index) {
+        try {
+            return this.get(index, Integer::parseInt);
+        } catch (NumberFormatException ignored) {
+            return Option.none();
+        }
+    }
 
-    int asInt(int index) throws ArgumentsException;
+    default Option<Float> asFloat(int index) {
+        try {
+            return this.get(index, Float::parseFloat);
+        } catch (NumberFormatException ignored) {
+            return Option.none();
+        }
+    }
 
-    float asFloat(int index) throws ArgumentsException;
+    default Option<Double> asDouble(int index) {
+        try {
+            return this.get(index, Double::parseDouble);
+        } catch (NumberFormatException ignored) {
+            return Option.none();
+        }
+    }
 
-    double asDouble(int index) throws ArgumentsException;
+    default int size() {
+        return this.get().size();
+    }
 }

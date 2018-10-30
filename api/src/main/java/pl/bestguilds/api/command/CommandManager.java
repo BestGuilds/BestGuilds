@@ -1,24 +1,43 @@
 package pl.bestguilds.api.command;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import io.vavr.collection.HashSet;
+import io.vavr.collection.List;
 import io.vavr.collection.Set;
 import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
+import pl.bestguilds.api.command.executor.CommandExecutor;
 
-import java.util.Arrays;
+public final class CommandManager {
 
-public interface CommandManager {
+    private final BiMap<Command, String> subCommands;
 
-    void register(@NotNull CommandExecutor<?> executor);
-
-    default void register(CommandExecutor<?>... executors) {
-        Arrays.stream(executors).forEach(this::register);
+    public CommandManager() {
+        this.subCommands = HashBiMap.create();
     }
 
-    Command getMainCommand();
+    public void registerSubCommand(@NotNull CommandExecutor executor) {
+        Class<? extends CommandExecutor> type = executor.getClass();
 
-    void setMainCommand(CommandExecutor<?> executor);
+        if (!type.isAnnotationPresent(SubCommand.class)) {
+            return;
+        }
 
-    Option<Command> getCommand(String name);
+        final SubCommand subCommand = type.getAnnotation(SubCommand.class);
+        final String name = subCommand.name();
+        final List<String> aliases = List.of(subCommand.aliases());
 
-    Set<Command> getSubCommands();
+        final Command command = new Command(name, aliases, executor);
+
+        this.subCommands.put(command, command.getName());
+    }
+
+    public Option<Command> getCommand(String name) {
+        return getSubCommands().find(command -> command.contains(name));
+    }
+
+    public Set<Command> getSubCommands() {
+        return HashSet.ofAll(this.subCommands.inverse().values());
+    }
 }

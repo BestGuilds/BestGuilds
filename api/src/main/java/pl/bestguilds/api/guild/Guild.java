@@ -16,19 +16,19 @@ public interface Guild {
 
     GuildArea getArea();
 
-    Set<GuildMember> getMembers();
-
     void addMember(@NotNull GuildMember guildMember);
 
     void addMember(@NotNull User user);
 
     boolean isMember(@NotNull User user);
 
-    Set<Guild> getAllies();
+    Set<GuildMember> getMembers();
 
     void addAlly(@NotNull Guild guild);
 
     boolean isAlly(@NotNull Guild guild);
+
+    Set<Guild> getAllies();
 
     interface Builder extends pl.bestguilds.api.util.Builder<Guild> {
 
@@ -36,7 +36,7 @@ public interface Guild {
 
         Builder name(@NotNull String name);
 
-        Builder guildArea(@NotNull GuildArea area);
+        Builder area(@NotNull GuildArea area);
 
         Builder members(@NotNull java.util.Set<GuildMember> members);
 

@@ -8,14 +8,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.command.arguments.Arguments;
+import pl.bestguilds.api.command.executor.CommandExecutor;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
-public final class BukkitCommandInjector implements CommandInjector {
+public final class BukkitCommandInjector {
 
-    private final CommandMap commandMap;
     private final BestGuildsAPI plugin;
+    private final CommandMap commandMap;
 
     public BukkitCommandInjector(BestGuildsAPI plugin) {
         this.plugin = plugin;
@@ -26,36 +26,28 @@ public final class BukkitCommandInjector implements CommandInjector {
             this.commandMap = ((CommandMap) field.get(Bukkit.getServer()));
             field.setAccessible(false);
         } catch (IllegalAccessException | NoSuchFieldException exception) {
-            throw new CommandException(exception);
+            throw new UnsupportedOperationException(exception);
         }
     }
 
-    @Override
-    public void inject() {
-        this.commandMap.register("bestguilds", bukkit());
+    public void inject(final CommandExecutor guildCommand) {
+        this.commandMap.register("bestguilds", bukkit(guildCommand));
     }
 
-    @SuppressWarnings("unchecked")
-    private BukkitCommand bukkit() {
-        final Command command = plugin.getCommandManager().getMainCommand();
-
-        return new BukkitCommand(command.getName(), "a guild command", "/g", Arrays.asList(command.getAliases())) {
+    private BukkitCommand bukkit(final CommandExecutor executor) {
+        Command command = new Command("bestguilds", List.of("g", "guild", "guilds"), executor);
+        return new BukkitCommand(command.getName(), "a guild command", "/g", command.getAliases().asJava()) {
             @Override
-            public boolean execute(CommandSender sender, String x, String[] bukkitArgs) {
-                final Command mainCommand = plugin.getCommandManager().getMainCommand();
+            public boolean execute(CommandSender sender, String string, String[] bukkitArgs) {
+                final List<String> fittedArgs = List.of(bukkitArgs).subSequence(2, bukkitArgs.length);
+                final Arguments args = Arguments.of(fittedArgs);
+                final Option<String> arg0 = args.get(0);
 
-                if (bukkitArgs.length < 1) {
-                    mainCommand.getExecutor().execute(sender, Arguments.of(bukkitArgs));
-                    return true;
-                }
+                arg0
+                        .flatMap(name -> plugin.getCommandManager().getCommand(name))
+                        .getOrElse(command)
+                        .execute(sender, args);
 
-                final List<String> newArgs = List.of(bukkitArgs).subSequence(2, bukkitArgs.length);
-                final Arguments args = Arguments.of(newArgs);
-
-                final Option<Command> subCommand = plugin.getCommandManager().getCommand(bukkitArgs[1]);
-
-                Option.of(subCommand.getOrElse(mainCommand))
-                        .forEach(cmd -> cmd.getExecutor().execute(sender, args));
                 return true;
             }
         };

@@ -37,7 +37,7 @@ public class GuildBuilder implements Guild.Builder {
     }
 
     @Override
-    public Builder guildArea(@NotNull GuildArea area) {
+    public Builder area(@NotNull GuildArea area) {
         this.area = area;
         return this;
     }

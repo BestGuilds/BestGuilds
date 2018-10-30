@@ -1,13 +1,12 @@
 package pl.bestguilds;
 
+import io.papermc.lib.PaperLib;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.BestGuildsAPI;
 import pl.bestguilds.api.command.BukkitCommandInjector;
-import pl.bestguilds.api.command.CommandInjector;
 import pl.bestguilds.api.command.CommandManager;
-import pl.bestguilds.api.command.CommandManagerImpl;
 import pl.bestguilds.api.guild.GuildManager;
 import pl.bestguilds.api.user.UserManager;
 import pl.bestguilds.command.GuildCommand;
@@ -27,22 +26,25 @@ public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI 
 
     @Override
     public void onEnable() {
+        PaperLib.suggestPaper(this);
+
         this.userManager = new UserManagerImpl(this);
         this.guildManager = new GuildManagerImpl(this);
-        this.commandManager = new CommandManagerImpl();
+        this.commandManager = new CommandManager();
 
-        CommandInjector commandInjector = new BukkitCommandInjector(this);
+        BukkitCommandInjector commandInjector = new BukkitCommandInjector(this);
         registerCommands(commandInjector);
+        registerListeners();
 
         BestGuilds.setInstance(this);
     }
 
-    private void registerCommands(@NotNull CommandInjector injector) {
-        this.commandManager.setMainCommand(new GuildCommand(this));
-        this.commandManager.register(
+    private void registerCommands(@NotNull BukkitCommandInjector injector) {
+        this.commandManager.registerSubCommand(
                 new CreateGuildCommand(this)
         );
-        injector.inject();
+
+        injector.inject(new GuildCommand(this));
     }
 
     private void registerListeners() {
@@ -58,16 +60,16 @@ public final class BestGuildsPlugin extends JavaPlugin implements BestGuildsAPI 
 
     @Override
     public UserManager getUserManager() {
-        return userManager;
+        return this.userManager;
     }
 
     @Override
     public GuildManager getGuildManager() {
-        return guildManager;
+        return this.guildManager;
     }
 
     @Override
     public CommandManager getCommandManager() {
-        return commandManager;
+        return this.commandManager;
     }
 }

@@ -12,9 +12,14 @@ public class GuildMemberImpl implements GuildMember {
     private final Guild guild;
     private final User user;
 
-    GuildMemberImpl(Guild guild, User user) {
+    public GuildMemberImpl(Guild guild, User user) {
         this.guild = guild;
         this.user = user;
+    }
+
+    public GuildMemberImpl(User user, Guild guild) {
+        this.user = user;
+        this.guild = guild;
     }
 
     @Override

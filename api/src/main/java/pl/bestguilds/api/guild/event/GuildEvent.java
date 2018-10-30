@@ -1,6 +1,6 @@
 package pl.bestguilds.api.guild.event;
 
-import pl.bestguilds.api.BestEvent;
+import pl.bestguilds.api.event.BestEvent;
 import pl.bestguilds.api.guild.Guild;
 
 public abstract class GuildEvent extends BestEvent {

@@ -1,7 +1,7 @@
 package pl.bestguilds.api.user.event;
 
 import org.jetbrains.annotations.NotNull;
-import pl.bestguilds.api.BestEvent;
+import pl.bestguilds.api.event.BestEvent;
 import pl.bestguilds.api.user.User;
 
 public abstract class UserEvent extends BestEvent {

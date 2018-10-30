@@ -4,7 +4,6 @@ import com.google.common.base.MoreObjects;
 import io.vavr.control.Option;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.GuildMember;
 import pl.bestguilds.api.statistics.Statistics;
@@ -24,7 +23,7 @@ public class UserImpl extends BaseStatistics implements User {
     private GuildMember guildMember;
     private Reference<Player> playerReference;
 
-    UserImpl(UUID uuid, String name, Statistics statistics) {
+    public UserImpl(UUID uuid, String name, Statistics statistics) {
         this.uuid = uuid;
         this.name = name;
         this.statistics = statistics;
@@ -35,8 +34,6 @@ public class UserImpl extends BaseStatistics implements User {
         this.playerReference = new WeakReference<>(player);
     }
 
-    @NotNull
-    @Contract(" -> new")
     public static User.Builder builder() {
         return new UserBuilder();
     }

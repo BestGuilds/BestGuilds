@@ -3,7 +3,6 @@ package pl.bestguilds.guild;
 import com.google.common.base.Charsets;
 import com.google.common.base.MoreObjects;
 import io.vavr.collection.HashSet;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import pl.bestguilds.api.guild.Guild;
 import pl.bestguilds.api.guild.GuildArea;
@@ -33,8 +32,6 @@ public class GuildImpl implements Guild {
         this.allies = allies;
     }
 
-    @NotNull
-    @Contract(" -> new")
     public static GuildBuilder builder() {
         return new GuildBuilder();
     }
@@ -60,11 +57,6 @@ public class GuildImpl implements Guild {
     }
 
     @Override
-    public io.vavr.collection.Set<GuildMember> getMembers() {
-        return HashSet.ofAll(this.members);
-    }
-
-    @Override
     public void addMember(@NotNull GuildMember guildMember) {
         this.members.add(guildMember);
     }
@@ -80,8 +72,8 @@ public class GuildImpl implements Guild {
     }
 
     @Override
-    public io.vavr.collection.Set<Guild> getAllies() {
-        return HashSet.ofAll(this.allies);
+    public io.vavr.collection.Set<GuildMember> getMembers() {
+        return HashSet.ofAll(this.members);
     }
 
     @Override
@@ -92,6 +84,11 @@ public class GuildImpl implements Guild {
     @Override
     public boolean isAlly(@NotNull Guild guild) {
         return getAllies().contains(guild);
+    }
+
+    @Override
+    public io.vavr.collection.Set<Guild> getAllies() {
+        return HashSet.ofAll(this.allies);
     }
 
     @Override

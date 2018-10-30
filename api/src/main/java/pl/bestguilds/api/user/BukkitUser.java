@@ -3,12 +3,11 @@ package pl.bestguilds.api.user;
 import io.vavr.control.Option;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.ServerOperator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
-public interface BukkitUser extends ServerOperator {
+public interface BukkitUser {
 
     Option<Player> getPlayer();
 
@@ -22,15 +21,5 @@ public interface BukkitUser extends ServerOperator {
 
     default void sendMessage(BaseComponent... components) {
         getPlayer().forEach(player -> player.sendMessage(components));
-    }
-
-    @Override
-    default boolean isOp() {
-        return false;
-    }
-
-    @Override
-    default void setOp(boolean value) {
-        //meh
     }
 }

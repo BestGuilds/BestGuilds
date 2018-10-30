@@ -1,10 +1,14 @@
 package pl.bestguilds.api.storage;
 
+import pl.bestguilds.api.user.User;
+
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
 public interface Storage {
 
-    StorageType getType();
+    CompletableFuture<io.vavr.collection.Map<UUID, User>> loadUsers();
 
-    void connect() throws StorageException;
-
-    void disconnect() throws StorageException;
+    CompletableFuture<Void> saveUsers(Map<UUID, User> users);
 }

@@ -1,10 +1,13 @@
 package pl.bestguilds.api.guild;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 
 public interface GuildArea {
 
     Location getLocation();
+
+    World getWorld();
 
     int getSize();
 
