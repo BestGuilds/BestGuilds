@@ -11,16 +11,6 @@ public interface Arguments {
         return new ArgumentsImpl(args);
     }
 
-    static Arguments of(final java.util.List<String> arguments) {
-        final List<String> args = List.ofAll(arguments);
-        return of(args);
-    }
-
-    static Arguments of(final String[] arguments) {
-        final List<String> args = List.of(arguments);
-        return of(args);
-    }
-
     List<String> get();
 
     Option<String> get(int index);
@@ -28,24 +18,20 @@ public interface Arguments {
     <T> Option<T> get(int index, Function<String, T> function);
 
     default Option<Integer> asInt(int index) {
-        try {
-            return this.get(index, Integer::parseInt);
-        } catch (NumberFormatException ignored) {
-            return Option.none();
-        }
+        return this.as(index, Integer::parseInt);
     }
 
     default Option<Float> asFloat(int index) {
-        try {
-            return this.get(index, Float::parseFloat);
-        } catch (NumberFormatException ignored) {
-            return Option.none();
-        }
+        return this.as(index, Float::parseFloat);
     }
 
     default Option<Double> asDouble(int index) {
+        return this.as(index, Double::parseDouble);
+    }
+
+    default <T> Option<T> as(int index, Function<String, T> function) {
         try {
-            return this.get(index, Double::parseDouble);
+            return this.get(index, function);
         } catch (NumberFormatException ignored) {
             return Option.none();
         }
